@@ -1,0 +1,117 @@
+body { 
+	text-align: center;
+ }
+
+ h2 {
+ 	margin-top: 30px;
+ }
+
+ #container {
+    width: 500px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    position: relative;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: 50px;
+    padding-bottom: 25px;
+
+ }
+
+  #container-aluno {
+    width: 900px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    position: relative;
+    left: 50%;
+    margin-left: -450px;
+    margin-top: 50px;
+    padding-bottom: 25px;
+
+ }
+
+   #container-professor {
+    width: 900px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    position: relative;
+    left: 50%;
+    margin-left: -450px;
+    margin-top: 50px;
+    padding-bottom: 25px;
+
+ }
+
+    #container-admin {
+    width: 900px;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    position: relative;
+    left: 50%;
+    margin-left: -450px;
+    margin-top: 50px;
+    padding-bottom: 25px;
+
+ }
+
+   .danger-usuario, .danger-senha{
+    width: 300px;
+    position: relative;
+    left: 50%;
+    margin-left: -150px;
+
+ }
+
+ .login {
+ 	margin-top: 10px;
+ 	font-weight: bold;
+ }
+
+.login .input-group{;
+	max-width: 450px;
+	margin: 10px 0 10px 25px;
+}
+
+ .login .input-group-addon {
+ 	min-width: 39px;
+ }
+
+ .login .forgot-password {
+ 	margin-top: 10px;
+ }
+
+ .form-control {
+ 	margin-top: 1px;
+ 	margin-bottom: -1px !important;
+ }
+
+ #main-title{
+
+ }
+
+ #btn-aluno-sair {
+    margin-left: 515px;
+ }
+
+ #aluno-disciplinas table{
+    border: 1px solid black;
+ }
+
+  #btn-professor-sair {
+    margin-left: 485px;
+ }
+
+   #btn-admin-sair {
+    margin-left: 272px;
+ }
+
+ .navbar {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+ }
