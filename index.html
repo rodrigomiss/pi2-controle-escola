@@ -64,20 +64,23 @@
         </div>
 
         <div id="login-admin" class="login" style="display:none">
-          <div class="input-group">
-            <span class="input-group-addon glyphicon glyphicon-user"></span>
-            <input id="admin-usuario" type="text" class="form-control" placeholder="Usuário">
-          </div>
-          <div class="alert alert-danger danger-usuario" style="display:none">Preencha o campo Usuário</div>
-          <div class="input-group">
-            <span class="input-group-addon glyphicon glyphicon-asterisk"></span>
-            <input id="admin-senha" type="password" class="form-control" placeholder="Senha">
-          </div>
-          <div class="alert alert-danger danger-senha" style="display:none">Preencha o campo Senha</div>
-          <button type="button" id="btn-login-admin" class="btn btn-default btn-lg btn-login">
-            <span class="glyphicon glyphicon-log-in"></span> Entrar
-          </button>
-          <div class="forgot-password"><a href="#">Esqueci minha senha</a></div>
+          <form name="form-admin-login" id="form-admin-login" method="post" action="">
+            <input type="hidden" name="modo" value="login-admin">
+            <div class="input-group">
+              <span class="input-group-addon glyphicon glyphicon-user"></span>
+              <input id="admin-usuario" name="admin-usuario" type="text" class="form-control" placeholder="Usuário">
+            </div>
+            <div class="alert alert-danger danger-usuario" style="display:none">Preencha o campo Usuário</div>
+            <div class="input-group">
+              <span class="input-group-addon glyphicon glyphicon-asterisk"></span>
+              <input id="admin-senha" name="admin-senha" type="password" class="form-control" placeholder="Senha">
+            </div>
+            <div class="alert alert-danger danger-senha" style="display:none">Preencha o campo Senha</div>
+            <button type="button" id="btn-login-admin" class="btn btn-default btn-lg btn-login">
+              <span class="glyphicon glyphicon-log-in"></span> Entrar
+            </button>
+            <div class="forgot-password"><a href="#">Esqueci minha senha</a></div>
+          </form>
         </div>
       </div>
     </div>

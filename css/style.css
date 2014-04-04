@@ -115,3 +115,52 @@ body {
     border-right: 0;
     border-radius: 0;
  }
+
+/*cadastro de alunos area admin*/
+ .cadastro-alunos{
+    width: 900px;
+ }
+
+ .cadastro-alunos form{
+    margin: auto;
+    width: 350px;
+ }
+
+ .cadastro-alunos .form-control{
+    width: 300px;
+ }
+
+
+ .ls-table{
+    background-color:white;
+    box-shadow:0 1px 0 #e7e7e7;
+    border-radius:4px 4px 0 0;
+    margin: auto;
+}
+
+.ls-table thead{
+    color:white;
+}
+
+.ls-table thead tr th{
+    border-bottom:1px solid #e7e7e7;
+    border-left:1px solid #e7e7e7;
+    font-size:14px;
+    vertical-align:middle;
+    font-family:open_sans_bold;
+    background-color: #555555;
+    padding: 8px;
+}
+
+.ls-table thead tr th:first-child{
+    border-radius:4px 0 0 0;
+}
+
+.ls-table thead tr th:last-child{
+    border-radius:0 4px 0 0;
+}
+
+.ls-table tr td{
+    vertical-align:middle;
+    padding: 4px;
+}

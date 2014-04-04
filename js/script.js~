@@ -131,10 +131,6 @@ $("#btn-admin-sair").click(function(event){
   	$("#btn-admin-disciplinas").parent().removeClass("active");
  	$("#btn-admin-notas").parent().removeClass("active");
 	$("#btn-admin-sair").parent().addClass("active");
-	//setTimeout(function() {window.location.href = 'index.html'}, 800);
-	//window.location.href = "login.php?modo=logout-admin";
-
-	$.post("login.php", {modo: "logout-admin"});
 	setTimeout(function() {window.location.href = 'index.html'}, 800);
  });
 
@@ -323,19 +319,6 @@ function validaLoginAdmin(){
 		$("#main").hide("slow");
 		$("#container").append("<h2>Acessando o sistema</h2>");
 		//setTimeout(function() {window.location.href = 'admin.html'}, 800);
-		//$("#form-admin-login").submit();
-
-		$.post(
-			"login.php", 
-			{modo: "login-admin", usuario: $("#admin-usuario").val(), senha: $("#admin-senha").val() }, 
-			function(retorno){
-				if (retorno == "OK"){
-					setTimeout(function() {window.location.href = 'admin.php'}, 800);	
-				}else{
-					alert("ERRO");
-				}
-			}
-		);
-		
+		$("#login-admin").submit();
 	}
 };
