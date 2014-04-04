@@ -90,7 +90,10 @@ $("#btn-professor-sair").click(function(event){
 	$("#main").hide("slow");
 	$("#container-professor").append("<h2>Saindo do Sistema</h2>");
 	$("#btn-professor-sair").parent().addClass("active");
-	setTimeout(function() {window.location.href = 'index.html'}, 800);
+	$("#btn-admin-sair").parent().addClass("active");
+	//setTimeout(function() {window.location.href = 'index.html'}, 800);
+	//window.location.href = "login.php?modo=logout-admin";
+	$.post("login.php", {modo: "logout-admin"});
  });
 
 $("#btn-admin-inicial").click(function(event){
@@ -266,8 +269,7 @@ function validaLogin(login){
 			setTimeout(function() {window.location.href = 'professor.html'}, 800);
 		}
 	}else if(login == 'admin'){
-		if ($("#admin-usuario").val() == ""){
-			$(".danger-usuario").text("Preencha o campo Usuário");
+	if ($("#admin-usuario").val() == ""){
 			$(".danger-usuario").show("fast");
 			$("#admin-usuario").css("border-color", "#a94442");
 		}
@@ -277,7 +279,6 @@ function validaLogin(login){
 			usuariovalido = true;
 		}
 		if ($("#admin-senha").val() == ""){
-			$(".danger-senha").text("Preencha o campo Senha");
 			$(".danger-senha").show("fast");
 			$("#admin-senha").css("border-color", "#a94442");
 		}
@@ -287,9 +288,20 @@ function validaLogin(login){
 			senhavalida = true;
 		}
 		if (usuariovalido == true && senhavalida == true) {
-			$("#main").hide("slow");
-			$("#container").append("<h2>Acessando o sistema</h2>");
-			setTimeout(function() {window.location.href = 'admin.html'}, 800);
+			//$("#form-admin-login").submit();
+			$.post(
+				"login.php", 
+				{modo: "login-admin", usuario: $("#admin-usuario").val(), senha: $("#admin-senha").val() }, 
+				function(retorno){
+					if (retorno == "OK"){
+						$("#main").hide("slow");
+						$("#container").append("<h2>Acessando o sistema</h2>");
+						setTimeout(function() {window.location.href = 'admin.php'}, 800);	
+					}else{
+						alert("ERRO");
+					}
+				}
+			);	
 		}
 	}
 };
