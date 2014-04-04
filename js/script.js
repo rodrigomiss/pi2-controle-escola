@@ -1,216 +1,188 @@
 
 $("#btn-aluno").click(function(event){
  	event.preventDefault();
+ 	hideLogins();
  	$("#login-aluno").show("fast");
- 	$("#login-professor").hide("fast");
- 	$("#login-admin").hide("fast");
  	$("#main-title").text("Área do Aluno");
- 	$(".danger-usuario").hide("fast");
- 	$(".danger-senha").hide("fast");
- 	$("#aluno-usuario").css("border-color", "");
- 	$("#aluno-senha").css("border-color", "");
-  	$("#professor-usuario").css("border-color", "");
- 	$("#professor-senha").css("border-color", "");
-  	$("#admin-usuario").css("border-color", "");
- 	$("#admin-senha").css("border-color", "");
+ 	cleanCss();
  });
 
 $("#btn-professor").click(function(event){
  	event.preventDefault();
- 	$("#login-aluno").hide("fast");
+ 	hideLogins();
  	$("#login-professor").show("fast");
- 	$("#login-admin").hide("fast");
   	$("#main-title").text("Área do Professor");
-   	$(".danger-usuario").hide("fast");
- 	$(".danger-senha").hide("fast");
-  	$("#aluno-usuario").css("border-color", "");
- 	$("#aluno-senha").css("border-color", "");
-  	$("#professor-usuario").css("border-color", "");
- 	$("#professor-senha").css("border-color", "");
-  	$("#admin-usuario").css("border-color", "");
- 	$("#admin-senha").css("border-color", "");
+ 	cleanCss();
  });
 
 $("#btn-admin").click(function(event){
  	event.preventDefault();
- 	$("#login-aluno").hide("fast");
- 	$("#login-professor").hide("fast");
+ 	hideLogins();
  	$("#login-admin").show("fast");
   	$("#main-title").text("Área do Administrador");
-   	$(".danger-usuario").hide("fast");
- 	$(".danger-senha").hide("fast");
-  	$("#aluno-usuario").css("border-color", "");
- 	$("#aluno-senha").css("border-color", "");
-  	$("#professor-usuario").css("border-color", "");
- 	$("#professor-senha").css("border-color", "");
-  	$("#admin-usuario").css("border-color", "");
- 	$("#admin-senha").css("border-color", "");
+ 	clean();
  });
 
 $("#btn-login-aluno").click(function(){
-	validaLoginAluno();
+	validaLogin('aluno');
 });
 
 $("#btn-login-professor").click(function(){
-	validaLoginProfessor();
+	validaLogin('professor');
 });
 
 $("#btn-login-admin").click(function(){
-	validaLoginAdmin();
+	validaLogin('admin');
 });
-
 
 $("#btn-aluno-inicial").click(function(event){
  	event.preventDefault();
+ 	hideDivs('aluno');
  	$("#aluno-inicial").fadeIn("fast");
- 	$("#aluno-disciplinas").hide("fast");
- 	$("#aluno-notas").hide("fast");
- 	$("#btn-aluno-disciplinas").parent().removeClass("active");
- 	$("#btn-aluno-notas").parent().removeClass("active");
  });
 
 $("#btn-aluno-disciplinas").click(function(event){
  	event.preventDefault();
- 	$("#aluno-inicial").hide("fast");
+ 	hideDivs('aluno');
  	$("#aluno-disciplinas").fadeIn("fast");
- 	$("#aluno-notas").hide("fast");
   	$("#btn-aluno-disciplinas").parent().addClass("active");
- 	$("#btn-aluno-notas").parent().removeClass("active");
  });
 
 $("#btn-aluno-notas").click(function(event){
  	event.preventDefault();
- 	$("#aluno-inicial").hide("fast");
- 	$("#aluno-disciplinas").hide("fast");
+ 	hideDivs('aluno');
  	$("#aluno-notas").fadeIn("fast");
-  	$("#btn-aluno-disciplinas").parent().removeClass("active");
  	$("#btn-aluno-notas").parent().addClass("active");
  });
 
 $("#btn-aluno-sair").click(function(event){
  	event.preventDefault();
+ 	hideDivs('aluno');
 	$("#main").hide("slow");
 	$("#container-aluno").append("<h2>Saindo do Sistema</h2>");
-  	$("#btn-aluno-disciplinas").parent().removeClass("active");
- 	$("#btn-aluno-notas").parent().removeClass("active");
 	$("#btn-aluno-sair").parent().addClass("active");
 	setTimeout(function() {window.location.href = 'index.html'}, 800);
  });
 
 $("#btn-professor-inicial").click(function(event){
  	event.preventDefault();
+ 	hideDivs('professor');
  	$("#professor-inicial").fadeIn("fast");
- 	$("#professor-disciplinas").hide("fast");
- 	$("#professor-notas").hide("fast");
- 	$("#btn-professor-disciplinas").parent().removeClass("active");
- 	$("#btn-professor-notas").parent().removeClass("active");
  });
 
 $("#btn-professor-disciplinas").click(function(event){
  	event.preventDefault();
- 	$("#professor-inicial").hide("fast");
+ 	hideDivs('professor');
  	$("#professor-disciplinas").fadeIn("fast");
- 	$("#professor-notas").hide("fast");
   	$("#btn-professor-disciplinas").parent().addClass("active");
- 	$("#btn-professor-notas").parent().removeClass("active");
  });
 
 $("#btn-professor-notas").click(function(event){
  	event.preventDefault();
- 	$("#professor-inicial").hide("fast");
- 	$("#professor-disciplinas").hide("fast");
+ 	hideDivs('professor');
  	$("#professor-notas").fadeIn("fast");
-  	$("#btn-professor-disciplinas").parent().removeClass("active");
  	$("#btn-professor-notas").parent().addClass("active");
  });
 
-$("#btn-admin-sair").click(function(event){
+$("#btn-professor-sair").click(function(event){
  	event.preventDefault();
+ 	hideDivs('professor');
 	$("#main").hide("slow");
-	$("#container-admin").append("<h2>Saindo do Sistema</h2>");
-  	$("#btn-admin-disciplinas").parent().removeClass("active");
- 	$("#btn-admin-notas").parent().removeClass("active");
-	$("#btn-admin-sair").parent().addClass("active");
+	$("#container-professor").append("<h2>Saindo do Sistema</h2>");
+	$("#btn-professor-sair").parent().addClass("active");
 	setTimeout(function() {window.location.href = 'index.html'}, 800);
  });
 
 $("#btn-admin-inicial").click(function(event){
  	event.preventDefault();
+	hideDivs('admin');
  	$("#admin-inicial").fadeIn("fast");
- 	$("#admin-alunos").hide("fast");
- 	$("#admin-professores").hide("fast");
- 	$("#admin-disciplinas").hide("fast");
- 	$("#admin-notas").hide("fast");
-  	$("#btn-admin-alunos").parent().removeClass("active");
- 	$("#btn-admin-professores").parent().removeClass("active");
- 	$("#btn-admin-disciplinas").parent().removeClass("active");
- 	$("#btn-admin-notas").parent().removeClass("active");
  });
 
 $("#btn-admin-alunos").click(function(event){
  	event.preventDefault();
- 	$("#admin-inicial").hide("fast");
+	hideDivs('admin');
  	$("#admin-alunos").fadeIn("fast");
- 	$("#admin-professores").hide("fast");
- 	$("#admin-disciplinas").hide("fast");
- 	$("#admin-notas").hide("fast");
   	$("#btn-admin-alunos").parent().addClass("active");
- 	$("#btn-admin-professores").parent().removeClass("active");
- 	$("#btn-admin-disciplinas").parent().removeClass("active");
- 	$("#btn-admin-notas").parent().removeClass("active");
  });
 
 $("#btn-admin-professores").click(function(event){
  	event.preventDefault();
- 	$("#admin-inicial").hide("fast");
- 	$("#admin-alunos").hide("fast");
+ 	hideDivs('admin');
  	$("#admin-professores").fadeIn("fast");
- 	$("#admin-disciplinas").hide("fast");
- 	$("#admin-notas").hide("fast");
-  	$("#btn-admin-alunos").parent().removeClass("active");
  	$("#btn-admin-professores").parent().addClass("active");
- 	$("#btn-admin-disciplinas").parent().removeClass("active");
- 	$("#btn-admin-notas").parent().removeClass("active");
+
  });
 
 $("#btn-admin-disciplinas").click(function(event){
  	event.preventDefault();
- 	$("#admin-inicial").hide("fast");
- 	$("#admin-alunos").hide("fast");
- 	$("#admin-professores").hide("fast");
+ 	hideDivs('admin');
  	$("#admin-disciplinas").fadeIn("fast");
- 	$("#admin-notas").hide("fast");
-  	$("#btn-admin-alunos").parent().removeClass("active");
- 	$("#btn-admin-professores").parent().removeClass("active");
  	$("#btn-admin-disciplinas").parent().addClass("active");
- 	$("#btn-admin-notas").parent().removeClass("active");
  });
 
 $("#btn-admin-notas").click(function(event){
  	event.preventDefault();
- 	$("#admin-inicial").hide("fast");
- 	$("#admin-alunos").hide("fast");
- 	$("#admin-professores").hide("fast");
- 	$("#admin-disciplinas").hide("fast");
+ 	hideDivs('admin');
  	$("#admin-notas").fadeIn("fast");
-  	$("#btn-admin-alunos").parent().removeClass("active");
- 	$("#btn-admin-professores").parent().removeClass("active");
- 	$("#btn-admin-disciplinas").parent().removeClass("active");
  	$("#btn-admin-notas").parent().addClass("active");
  });
 
 $("#btn-admin-sair").click(function(event){
  	event.preventDefault();
+ 	hideDivs('admin');
+ 	$("#btn-professor-sair").parent().addClass("active");
 	$("#main").hide("slow");
 	$("#container-admin").append("<h2>Saindo do Sistema</h2>");
-  	$("#btn-professor-alunos").parent().removeClass("active");
- 	$("#btn-professor-professores").parent().removeClass("active");
- 	$("#btn-professor-disciplinas").parent().removeClass("active");
- 	$("#btn-professor-notas").parent().removeClass("active");
-	$("#btn-professor-sair").parent().addClass("active");
 	setTimeout(function() {window.location.href = 'index.html'}, 800);
  });
 
+function cleanCss(){
+ 	$("#aluno-usuario").css("border-color", "");
+ 	$("#aluno-senha").css("border-color", "");
+  	$("#professor-usuario").css("border-color", "");
+ 	$("#professor-senha").css("border-color", "");
+  	$("#admin-usuario").css("border-color", "");
+ 	$("#admin-senha").css("border-color", "");
+ 	$(".danger-usuario").text("");
+ 	$(".danger-usuario").hide("fast");
+ 	$(".danger-usuario").text("");
+ 	$(".danger-senha").hide("fast");
+}
+
+function hideLogins(){
+ 	$("#login-aluno").hide("fast");
+ 	$("#login-professor").hide("fast");
+ 	$("#login-admin").hide("fast");
+}
+
+function hideDivs(type){
+	if (type == 'aluno'){
+		$("#aluno-inicial").hide("fast");
+	 	$("#aluno-disciplinas").hide("fast");
+	 	$("#aluno-notas").hide("fast");
+	  	$("#btn-aluno-disciplinas").parent().removeClass("active");
+	 	$("#btn-aluno-notas").parent().removeClass("active");
+
+	}else if (type == 'professor'){
+		$("#professor-inicial").hide("fast");
+	 	$("#professor-disciplinas").hide("fast");
+	 	$("#professor-notas").hide("fast");
+	  	$("#btn-professor-disciplinas").parent().removeClass("active");
+	 	$("#btn-professor-notas").parent().removeClass("active");
+
+	}else if (type == 'admin'){
+	 	$("#admin-inicial").hide("fast");
+	 	$("#admin-alunos").hide("fast");
+	 	$("#admin-professores").hide("fast");
+	 	$("#admin-disciplinas").hide("fast");
+	 	$("#admin-notas").hide("fast");
+	  	$("#btn-admin-alunos").parent().removeClass("active");
+	 	$("#btn-admin-professores").parent().removeClass("active");
+	 	$("#btn-admin-disciplinas").parent().removeClass("active");
+	 	$("#btn-admin-notas").parent().removeClass("active");
+	}
+}
 
 function load(){
  	event.preventDefault();
@@ -238,86 +210,86 @@ function loadadmin(){
  	$("#admin-inicial").show("fast");
 };
 
-function validaLoginAluno(){
+function validaLogin(login){
 	usuariovalido = false;
 	senhavalida = false
-	if ($("#aluno-usuario").val() == ""){
-		$(".danger-usuario").show("fast");
-		$("#aluno-usuario").css("border-color", "#a94442");
-	}
-	else{
-		$(".danger-usuario").hide("fast");
-		$("#aluno-usuario").css("border-color", "");
-		usuariovalido = true;
-	}
-	if ($("#aluno-senha").val() == ""){
-		$(".danger-senha").show("fast");
-		$("#aluno-senha").css("border-color", "#a94442");
-	}
-	else{
-		$(".danger-senha").hide("fast");
-		$("#aluno-senha").css("border-color", "");
-		senhavalida = true;
-	}
-	if (usuariovalido == true && senhavalida == true) {
-		$("#main").hide("slow");
-		$("#container").append("<h2>Acessando o sistema</h2>");
-		setTimeout(function() {window.location.href = 'aluno.html'}, 800);
-	}
-};
-
-function validaLoginProfessor(){
-	usuariovalido = false;
-	senhavalida = false
-	if ($("#professor-usuario").val() == ""){
-		$(".danger-usuario").show("fast");
-		$("#professor-usuario").css("border-color", "#a94442");
-	}
-	else{
-		$(".danger-usuario").hide("fast");
-		$("#professor-usuario").css("border-color", "");
-		usuariovalido = true;
-	}
-	if ($("#professor-senha").val() == ""){
-		$(".danger-senha").show("fast");
-		$("#professor-senha").css("border-color", "#a94442");
-	}
-	else{
-		$(".danger-senha").hide("fast");
-		$("#professor-senha").css("border-color", "");
-		senhavalida = true;
-	}
-	if (usuariovalido == true && senhavalida == true) {
-		$("#main").hide("slow");
-		$("#container").append("<h2>Acessando o sistema</h2>");
-		setTimeout(function() {window.location.href = 'professor.html'}, 800);
-	}
-};
-
-function validaLoginAdmin(){
-	usuariovalido = false;
-	senhavalida = false
-	if ($("#admin-usuario").val() == ""){
-		$(".danger-usuario").show("fast");
-		$("#admin-usuario").css("border-color", "#a94442");
-	}
-	else{
-		$(".danger-usuario").hide("fast");
-		$("#admin-usuario").css("border-color", "");
-		usuariovalido = true;
-	}
-	if ($("#admin-senha").val() == ""){
-		$(".danger-senha").show("fast");
-		$("#admin-senha").css("border-color", "#a94442");
-	}
-	else{
-		$(".danger-senha").hide("fast");
-		$("#admin-senha").css("border-color", "");
-		senhavalida = true;
-	}
-	if (usuariovalido == true && senhavalida == true) {
-		$("#main").hide("slow");
-		$("#container").append("<h2>Acessando o sistema</h2>");
-		setTimeout(function() {window.location.href = 'admin.html'}, 800);
+	if (login == 'aluno') {
+		if ($("#aluno-usuario").val() == ""){
+			$(".danger-usuario").text("Preencha o campo R.A.");
+			$(".danger-usuario").show("fast");
+			$("#aluno-usuario").css("border-color", "#a94442");
+		}
+		else{
+			$(".danger-usuario").hide("fast");
+			$("#aluno-usuario").css("border-color", "");
+			usuariovalido = true;
+		}
+		if ($("#aluno-senha").val() == ""){
+			$(".danger-senha").text("Preencha o campo Senha");
+			$(".danger-senha").show("fast");
+			$("#aluno-senha").css("border-color", "#a94442");
+		}
+		else{
+			$(".danger-senha").hide("fast");
+			$("#aluno-senha").css("border-color", "");
+			senhavalida = true;
+		}
+		if (usuariovalido == true && senhavalida == true) {
+			$("#main").hide("slow");
+			$("#container").append("<h2>Acessando o sistema</h2>");
+			setTimeout(function() {window.location.href = 'aluno.html'}, 800);
+		}
+	}else if(login == 'professor'){
+		if ($("#professor-usuario").val() == ""){
+			$(".danger-usuario").text("Preencha o campo Usuário");
+			$(".danger-usuario").show("fast");
+			$("#professor-usuario").css("border-color", "#a94442");
+		}
+		else{
+			$(".danger-usuario").hide("fast");
+			$("#professor-usuario").css("border-color", "");
+			usuariovalido = true;
+		}
+		if ($("#professor-senha").val() == ""){
+			$(".danger-senha").text("Preencha o campo Senha");
+			$(".danger-senha").show("fast");
+			$("#professor-senha").css("border-color", "#a94442");
+		}
+		else{
+			$(".danger-senha").hide("fast");
+			$("#professor-senha").css("border-color", "");
+			senhavalida = true;
+		}
+		if (usuariovalido == true && senhavalida == true) {
+			$("#main").hide("slow");
+			$("#container").append("<h2>Acessando o sistema</h2>");
+			setTimeout(function() {window.location.href = 'professor.html'}, 800);
+		}
+	}else if(login == 'admin'){
+		if ($("#admin-usuario").val() == ""){
+			$(".danger-usuario").text("Preencha o campo Usuário");
+			$(".danger-usuario").show("fast");
+			$("#admin-usuario").css("border-color", "#a94442");
+		}
+		else{
+			$(".danger-usuario").hide("fast");
+			$("#admin-usuario").css("border-color", "");
+			usuariovalido = true;
+		}
+		if ($("#admin-senha").val() == ""){
+			$(".danger-senha").text("Preencha o campo Senha");
+			$(".danger-senha").show("fast");
+			$("#admin-senha").css("border-color", "#a94442");
+		}
+		else{
+			$(".danger-senha").hide("fast");
+			$("#admin-senha").css("border-color", "");
+			senhavalida = true;
+		}
+		if (usuariovalido == true && senhavalida == true) {
+			$("#main").hide("slow");
+			$("#container").append("<h2>Acessando o sistema</h2>");
+			setTimeout(function() {window.location.href = 'admin.html'}, 800);
+		}
 	}
 };
