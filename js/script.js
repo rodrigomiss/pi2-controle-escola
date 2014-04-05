@@ -20,7 +20,7 @@ $("#btn-admin").click(function(event){
  	hideLogins();
  	$("#login-admin").show("fast");
   	$("#main-title").text("Área do Administrador");
- 	clean();
+ 	cleanCss();
  });
 
 $("#btn-login-aluno").click(function(){
@@ -269,39 +269,34 @@ function validaLogin(login){
 			setTimeout(function() {window.location.href = 'professor.html'}, 800);
 		}
 	}else if(login == 'admin'){
-	if ($("#admin-usuario").val() == ""){
-			$(".danger-usuario").show("fast");
-			$("#admin-usuario").css("border-color", "#a94442");
-		}
-		else{
-			$(".danger-usuario").hide("fast");
-			$("#admin-usuario").css("border-color", "");
-			usuariovalido = true;
-		}
-		if ($("#admin-senha").val() == ""){
-			$(".danger-senha").show("fast");
-			$("#admin-senha").css("border-color", "#a94442");
-		}
-		else{
-			$(".danger-senha").hide("fast");
-			$("#admin-senha").css("border-color", "");
-			senhavalida = true;
-		}
-		if (usuariovalido == true && senhavalida == true) {
-			//$("#form-admin-login").submit();
-			$.post(
-				"login.php", 
-				{modo: "login-admin", usuario: $("#admin-usuario").val(), senha: $("#admin-senha").val() }, 
-				function(retorno){
-					if (retorno == "OK"){
-						$("#main").hide("slow");
-						$("#container").append("<h2>Acessando o sistema</h2>");
-						setTimeout(function() {window.location.href = 'admin.php'}, 800);	
-					}else{
-						alert("ERRO");
-					}
+		$.post(
+			"login.php", 
+			{modo: "login-admin", usuario: $("#admin-usuario").val(), senha: $("#admin-senha").val() }, 
+			function(retorno){
+				if ($("#admin-usuario").val() == "" || retorno == "ERROUSUARIO"){
+					$(".danger-usuario").text("Usuário incorreto");
+					$(".danger-usuario").show("fast");
+					$("#admin-usuario").css("border-color", "#a94442");
+				}else{
+					$(".danger-usuario").hide("fast");
+					$("#admin-usuario").css("border-color", "");
+					usuariovalido = true;
 				}
-			);	
-		}
+				if ($("#admin-senha").val() == "" || retorno == "ERROSENHA"){
+					$(".danger-senha").text("Senha incorreta");
+					$(".danger-senha").show("fast");
+					$("#admin-senha").css("border-color", "#a94442");
+				}else{
+					$(".danger-senha").hide("fast");
+					$("#admin-senha").css("border-color", "");
+					senhavalida = true;
+				}
+				if (retorno == "OK"){
+					$("#main").hide("slow");
+					$("#container").append("<h2>Acessando o sistema</h2>");
+					setTimeout(function() {window.location.href = 'admin.php'}, 800);	
+				}
+			}
+		);	
 	}
 };

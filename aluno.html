@@ -37,7 +37,7 @@
               <ul class="nav navbar-nav">
                 <li><a id="btn-aluno-disciplinas" href="#">Disciplinas</a></li>
                 <li><a id="btn-aluno-notas" href="#">Notas</a></li>
-                <li><a id="btn-aluno-sair" href="#"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
+                <li><a id="btn-aluno-sair" href="#"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
               </ul>
             </div>
           </div>
@@ -47,7 +47,40 @@
           <p>Aqui você pode acessar as disciplinas em que está matriculado, verificar suas notas e também calcular sua média.</p>
         </div>
         <div id="aluno-disciplinas" style="display:none">
-          <h3>Disciplinas</h3>
+<!--           <h3>Disciplinas</h3> -->
+         <div id="aluno-disciplinas-list"class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Disciplinas</div>
+            <div class="panel-body">
+              <p>Lista das disciplinas matriculadas.</p>
+            </div>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Nota</th>
+                </tr>
+              </thead>
+              <tfoot>
+              </tfoot>
+              <tr>
+                <td>00001</td>
+                <td>Disciplina 1</td>
+                <td>7.5</td>
+              </tr>
+              <tr>
+                <td>00005</td>
+                <td>Disciplina 5</td>
+                <td>8.0</td>
+              </tr>
+              <tr>
+                <td>00007</td>
+                <td>Disciplina 7</td>
+                <td>6.5</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div id="aluno-notas" style="display:none">
           <h3>Notas</h3>

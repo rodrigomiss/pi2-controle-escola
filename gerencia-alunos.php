@@ -73,10 +73,10 @@
 		  <div class="input-group">
 		    <span class="input-group-addon glyphicon glyphicon-asterisk"></span>
 		    <input id="admin-senha" name="senha" type="password" class="form-control" placeholder="Senha" value="'.$senha.'">
-		  </div>
+
 		  <div class="alert alert-danger danger-senha" style="display:none;">Preencha o campo Senha</div>
 		  <button type="submit" id="" class="btn btn-default btn-lg btn-login" onClick="this.submit();">
-		    <span class="glyphicon glyphicon-log-in"></span> Salvar
+		    <span class="glyphicon glyphicon-log-out"></span> Salvar
 		  </button>
 		</form>
 		</div>';

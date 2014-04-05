@@ -7,12 +7,15 @@
 		$usuario = $_POST["usuario"];
 		$senha = $_POST['senha'];
 
-		if ($usuario == "admin" && $senha == "utfpr1234"){
-					
+		if ($usuario != "admin"){					
 			$_SESSION["administrador"] = $usuario;
-			echo "OK";
+			echo "ERROUSUARIO";
+		}
+		else if ($senha != "utfpr1234"){
+			$_SESSION["administrador"] = $usuario;
+			echo "ERROSENHA";
 		}else{
-			echo "ERRO";
+			echo "OK";
 		}
 	}elseif ($modo == "logout-admin"){
 		unset($_SESSION["administrador"]);

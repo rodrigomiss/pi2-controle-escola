@@ -29,8 +29,12 @@ body {
     margin-left: -450px;
     margin-top: 50px;
     padding-bottom: 25px;
-
  }
+
+ #aluno-disciplinas-list{
+    width: 500px;
+    margin-left: 200px;
+}
 
    #container-professor {
     width: 900px;
@@ -95,10 +99,6 @@ body {
 
  #btn-aluno-sair {
     margin-left: 515px;
- }
-
- #aluno-disciplinas table{
-    border: 1px solid black;
  }
 
   #btn-professor-sair {
