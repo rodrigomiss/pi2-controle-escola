@@ -117,50 +117,29 @@ body {
  }
 
 /*cadastro de alunos area admin*/
- .cadastro-alunos{
-    width: 900px;
+ #cadastro-aluno-list{
+    margin: auto;
+    width: 500px;
  }
 
- .cadastro-alunos form{
-    margin: auto;
+#cadastro-aluno-list .input-group{
+    margin-bottom: 3px;
+}
+
+ #cadastro-aluno-list .input-group-addon{
+    width: 150px;
+    text-align: right;
+ }
+
+ #cadastro-aluno-list .form-control{
     width: 350px;
  }
 
- .cadastro-alunos .form-control{
-    width: 300px;
+#cadastro-aluno-list .btn-salvar{
+    margin-top: 6px;
  }
 
-
- .ls-table{
-    background-color:white;
-    box-shadow:0 1px 0 #e7e7e7;
-    border-radius:4px 4px 0 0;
-    margin: auto;
-}
-
-.ls-table thead{
-    color:white;
-}
-
-.ls-table thead tr th{
-    border-bottom:1px solid #e7e7e7;
-    border-left:1px solid #e7e7e7;
-    font-size:14px;
-    vertical-align:middle;
-    font-family:open_sans_bold;
-    background-color: #555555;
-    padding: 8px;
-}
-
-.ls-table thead tr th:first-child{
-    border-radius:4px 0 0 0;
-}
-
-.ls-table thead tr th:last-child{
-    border-radius:0 4px 0 0;
-}
-
-.ls-table tr td{
-    vertical-align:middle;
-    padding: 4px;
+#alunos-cadastrados-list{
+    width: 500px;
+    margin-left: 200px;
 }

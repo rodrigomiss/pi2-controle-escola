@@ -300,3 +300,31 @@ function validaLogin(login){
 		);	
 	}
 };
+
+$("#cadastro-aluno-form").submit(function(event){
+	$.post("form-cadastro-aluno.php", $("#form-cadastro-aluno").serialize());
+});
+
+function carregaFormEditarAluno(indice){
+	$.get("includes/admin/form-cadastro-aluno.php", {id: indice},
+		function(retorno){
+			$("#retorno_ajax").html(retorno);
+		}
+	);
+}
+
+function removeAluno(indice){
+	$.post("includes/admin/lista-cadastro-aluno.php", {modo: "remove", id: indice},
+		function(retorno){
+			$("#retorno_ajax").html(retorno);
+		}
+	);
+}
+
+function carregaListaAlunos(){
+	$.post("includes/admin/lista-cadastro-aluno.php", {modo: "listar"},
+		function(retorno){
+			$("#retorno_ajax").html(retorno);
+		}
+	);	
+}
