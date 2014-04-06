@@ -62,19 +62,27 @@
           <p>Aqui você pode cadastrar, modificar ou excluir dados de alunos, professores, disciplinas e notas.</p>
         </div>
 
-        <div id="retorno_ajax">
-          <?php      
-            if ($modo == "cadastrar-aluno" || $modo == "editar-aluno"){              
-              require_once "includes/admin/form-cadastro-aluno.php";
-            }else{
-              require_once "includes/admin/lista-cadastro-aluno.php";
-            }          
-          ?>
-        </div>
-
-        </div>
+        <div id="admin-alunos" style="display:none">
+          <div id="retorno_ajax">
+            <?php      
+              if ($modo == "cadastrar-aluno" || $modo == "editar-aluno"){              
+                require_once "includes/admin/form-cadastro-aluno.php";
+              }else{
+                require_once "includes/admin/lista-cadastro-aluno.php";
+              }          
+            ?>
+          </div>
+        </div>        
         <div id="admin-professores" style="display:none">
-          <h3>Professores</h3>
+          <div id="retorno_ajax_professor">
+            <?php      
+              if ($modo == "cadastrar-professor" || $modo == "editar-professor"){              
+                require_once "includes/admin/form-cadastro-professor.php";
+              }else{
+                require_once "includes/admin/lista-cadastro-professor.php";
+              }          
+            ?>
+          </div>
         </div>
         <div id="admin-disciplinas" style="display:none">
           <h3>Disciplinas</h3>

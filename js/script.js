@@ -301,6 +301,7 @@ function validaLogin(login){
 	}
 };
 
+/*cadastro de alunos da area admin */
 $("#cadastro-aluno-form").submit(function(event){
 	$.post("form-cadastro-aluno.php", $("#form-cadastro-aluno").serialize());
 });
@@ -328,3 +329,34 @@ function carregaListaAlunos(){
 		}
 	);	
 }
+
+
+/*div professor area admin*/
+function carregaFormEditarProfessor(indice){
+	$.post("includes/admin/form-cadastro-professor.php", {id: indice},
+		function(retorno){
+			$("#retorno_ajax_professor").html(retorno);
+		}
+	);
+}
+
+function removeProfessor(indice){
+	$.post("includes/admin/lista-cadastro-professor.php", {modo: "remove", id: indice},
+		function(retorno){
+			$("#retorno_ajax_professor").html(retorno);
+		}
+	);
+}
+
+function carregaListaProfessores(){
+	$.post("includes/admin/lista-cadastro-professor.php", {modo: "listar"},
+		function(retorno){
+			$("#retorno_ajax_professor").html(retorno);
+		}
+	);	
+}
+
+$("#cadastro-professor-form").submit(function(event){
+	$.post("form-cadastro-professor.php", $("#form-cadastro-professor").serialize());
+});
+

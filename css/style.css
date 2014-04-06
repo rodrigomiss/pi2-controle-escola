@@ -143,3 +143,33 @@ body {
     width: 500px;
     margin-left: 200px;
 }
+
+
+/*cadastro de professores area admin*/
+ #cadastro-professor-list{
+    margin: auto;
+    width: 500px;
+ }
+
+#cadastro-professor-list .input-group{
+    margin-bottom: 3px;
+}
+
+ #cadastro-professor-list .input-group-addon{
+    width: 150px;
+    text-align: right;
+ }
+
+ #cadastro-professor-list .form-control{
+    width: 350px;
+ }
+
+#cadastro-professor-list .btn-salvar{
+    margin-top: 6px;
+ }
+
+#professores-cadastrados-list{
+    width: 500px;
+    margin-left: 200px;
+}
+
