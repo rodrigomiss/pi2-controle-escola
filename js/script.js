@@ -331,7 +331,7 @@ function carregaListaAlunos(){
 }
 
 
-/*div professor area admin*/
+/*cadastro de professor na area admin*/
 function carregaFormEditarProfessor(indice){
 	$.post("includes/admin/form-cadastro-professor.php", {id: indice},
 		function(retorno){
@@ -358,5 +358,35 @@ function carregaListaProfessores(){
 
 $("#cadastro-professor-form").submit(function(event){
 	$.post("form-cadastro-professor.php", $("#form-cadastro-professor").serialize());
+});
+
+
+/*cadastro disciplina na area admin*/
+function carregaFormEditarDisciplina(indice){
+	$.post("includes/admin/form-cadastro-disciplina.php", {id: indice},
+		function(retorno){
+			$("#retorno_ajax_disciplina").html(retorno);
+		}
+	);
+}
+
+function removeDisciplina(indice){
+	$.post("includes/admin/lista-cadastro-disciplina.php", {modo: "remove", id: indice},
+		function(retorno){
+			$("#retorno_ajax_disciplina").html(retorno);
+		}
+	);
+}
+
+function carregaListaDisciplinas(){
+	$.post("includes/admin/lista-cadastro-disciplina.php", {modo: "listar"},
+		function(retorno){
+			$("#retorno_ajax_disciplina").html(retorno);
+		}
+	);	
+}
+
+$("#cadastro-disciplina-form").submit(function(event){
+	$.post("form-cadastro-disciplina.php", $("#form-cadastro-disciplina").serialize());
 });
 

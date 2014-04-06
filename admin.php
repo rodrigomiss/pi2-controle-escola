@@ -85,7 +85,15 @@
           </div>
         </div>
         <div id="admin-disciplinas" style="display:none">
-          <h3>Disciplinas</h3>
+          <div id="retorno_ajax_disciplina">
+            <?php      
+              if ($modo == "cadastrar-disciplina" || $modo == "editar-disciplina"){              
+                require_once "includes/admin/form-cadastro-disciplina.php";
+              }else{
+                require_once "includes/admin/lista-cadastro-disciplina.php";
+              }          
+            ?>
+          </div>
         </div>
         <div id="admin-notas" style="display:none">
           <h3>Notas</h3>
