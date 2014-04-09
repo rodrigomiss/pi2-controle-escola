@@ -8,16 +8,20 @@
 		$senha = $_POST['senha'];
 
 		if ($usuario != "admin"){					
-			$_SESSION["administrador"] = $usuario;
 			echo "ERROUSUARIO";
 		}
 		else if ($senha != "utfpr1234"){
-			$_SESSION["administrador"] = $usuario;
 			echo "ERROSENHA";
 		}else{
 			echo "OK";
+			$_SESSION["administrador"] = $usuario;
 		}
 	}elseif ($modo == "logout-admin"){
 		unset($_SESSION["administrador"]);
+	}elseif ($modo == "login-aluno"){
+		require_once "gerencia-alunos.php";
+		$ra = $_POST["aluno-ra"];
+		$senha = $_POST["aluno-senha"];
+		$alunos = listaAlunos();
 	}
 ?>
