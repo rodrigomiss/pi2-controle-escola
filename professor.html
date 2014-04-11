@@ -47,10 +47,45 @@
           <p>Aqui você pode acessar as disciplinas que ministra aulas e modificar notas dos alunos.</p>
         </div>
         <div id="professor-disciplinas" style="display:none">
-          <h3>Disciplinas</h3>
+          <!-- <h3>Disciplinas</h3> -->
+          <div id="aluno-disciplinas-list"class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Disciplinas</div>
+            <div class="panel-body">
+              <p>Lista das disciplinas.</p>
+            </div>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                </tr>
+              </thead>
+              <tfoot>
+              </tfoot>
+              <tr>
+                <td>00001</td>
+                <td>Disciplina 1</td>
+              </tr>
+              <tr>
+                <td>00005</td>
+                <td>Disciplina 5</td>
+              </tr>
+              <tr>
+                <td>00007</td>
+                <td>Disciplina 7</td>
+              </tr>
+            </table>
+          </div>
         </div>
         <div id="professor-notas" style="display:none">
           <h3>Notas</h3>
+          <select id="professor-disciplinas-select" class="form-control">
+            <option selected disabled>Selecione a disciplina</option>
+            <option value="00001">Disciplina 1</option>
+            <option value="00005">Disciplina 5</option>
+            <option value="00007">Disciplina 7</option>
+          </select>
         </div>
       </div>
     </div>

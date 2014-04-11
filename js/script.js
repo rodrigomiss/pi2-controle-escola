@@ -91,9 +91,9 @@ $("#btn-professor-sair").click(function(event){
 	$("#container-professor").append("<h2>Saindo do Sistema</h2>");
 	$("#btn-professor-sair").parent().addClass("active");
 	$("#btn-admin-sair").parent().addClass("active");
-	//setTimeout(function() {window.location.href = 'index.html'}, 800);
+	setTimeout(function() {window.location.href = 'index.html'}, 800);
 	//window.location.href = "login.php?modo=logout-admin";
-	$.post("login.php", {modo: "logout-admin"});
+	//$.post("login.php", {modo: "logout-admin"});
  });
 
 $("#btn-admin-inicial").click(function(event){

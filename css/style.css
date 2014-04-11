@@ -144,3 +144,6 @@ body {
     margin-left: 200px;
 }
 
+#professor-notas select, #aluno-notas select{
+    width: 250px;
+}
