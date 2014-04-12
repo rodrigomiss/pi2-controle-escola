@@ -59,7 +59,7 @@
 
         <div id="admin-inicial" style="display:none">
           <h4>Bem vindo à área do administrador.</h4>
-          <p>Aqui você pode cadastrar, modificar ou excluir dados de alunos, professores, disciplinas e notas.</p>
+          <p>Aqui você possui controle total do sistema.</p>
         </div>
 
         <div id="admin-alunos" style="display:none">

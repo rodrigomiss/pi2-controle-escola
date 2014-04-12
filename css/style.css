@@ -31,7 +31,7 @@ body {
     padding-bottom: 25px;
  }
 
- #aluno-disciplinas-list{
+ #aluno-disciplinas-list, #professor-notas-list{
     width: 500px;
     margin-left: 200px;
 }
@@ -131,7 +131,7 @@ body {
     text-align: right;
 }
 
- #cadastro-aluno-list .form-control, #cadastro-professor-list .form-control, #cadastro-disciplina-list .form-control{
+ #cadastro-aluno-list .form-control, #cadastro-professor-list .form-control, #cadastro-disciplina-list .form-control {
     width: 350px;
  }
 
@@ -146,4 +146,5 @@ body {
 
 #professor-notas select, #aluno-notas select{
     width: 250px;
+    margin-left: 325px;
 }

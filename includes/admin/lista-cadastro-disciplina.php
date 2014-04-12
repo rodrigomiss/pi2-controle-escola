@@ -17,7 +17,7 @@
 
 <div id="disciplinas-cadastradas" style="display:visible">
  <div id="disciplinas-cadastradas-list"class="panel panel-default">
-    <div class="panel-heading">Disciplinas Cadastrados</div>
+    <div class="panel-heading">Disciplinas Cadastradas</div>
     <div class="panel-body">
       <a href="javascript:carregaFormEditarDisciplina(-1);"><img src="img/icone-adicionar" title="Novo Cadastro"></a>
       <a href="javascript:carregaListaDisciplinas();"><img src="img/icone-procurar" title="Listar/Procurar Cadastro"></a>
