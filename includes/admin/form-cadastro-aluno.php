@@ -11,7 +11,7 @@
 
 
   if ($modo == "gravar-cadastro"){
-    require_once "../../gerencia-alunos.php";
+    require_once "../../funcoes-alunos.php";
     gravarCadastroAluno($_POST);
     header("Location: ../../admin.php");
   }

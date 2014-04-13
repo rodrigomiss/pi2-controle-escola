@@ -19,7 +19,7 @@
 	}elseif ($modo == "logout-admin"){
 		unset($_SESSION["administrador"]);
 	}elseif ($modo == "login-aluno"){
-		require_once "gerencia-alunos.php";
+		require_once "funcoes-alunos.php";
 		$ra = $_POST["aluno-ra"];
 		$senha = $_POST["aluno-senha"];
 		$alunos = listaAlunos();

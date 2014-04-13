@@ -5,9 +5,9 @@
   $indice = $_POST['id'];
 
   if ($modo == "listar" || $modo == "remove"){
-    require_once "../../gerencia-alunos.php";
+    require_once "../../funcoes-alunos.php";
   }else{
-    require_once "gerencia-alunos.php";
+    require_once "funcoes-alunos.php";
   }
 
   if ($modo == "remove"){
