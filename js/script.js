@@ -61,7 +61,12 @@ $("#btn-aluno-sair").click(function(event){
 	$("#main").hide("slow");
 	$("#container-aluno").append("<h2>Saindo do Sistema</h2>");
 	$("#btn-aluno-sair").parent().addClass("active");
-	setTimeout(function() {window.location.href = 'index.html'}, 800);
+
+	$.post("login.php", {modo: "logout-aluno"},
+		function(){
+			setTimeout(function() {window.location.href = 'index.html'}, 800);
+		}
+	);
  });
 
 $("#btn-professor-inicial").click(function(event){
@@ -91,9 +96,12 @@ $("#btn-professor-sair").click(function(event){
 	$("#container-professor").append("<h2>Saindo do Sistema</h2>");
 	$("#btn-professor-sair").parent().addClass("active");
 	$("#btn-admin-sair").parent().addClass("active");
-	setTimeout(function() {window.location.href = 'index.html'}, 800);
-	//window.location.href = "login.php?modo=logout-admin";
-	//$.post("login.php", {modo: "logout-admin"});
+
+	$.post("login.php", {modo: "logout-professor"},
+		function(){
+			setTimeout(function() {window.location.href = 'index.html'}, 800);
+		}
+	);
  });
 
 $("#btn-admin-inicial").click(function(event){
@@ -137,7 +145,12 @@ $("#btn-admin-sair").click(function(event){
  	$("#btn-professor-sair").parent().addClass("active");
 	$("#main").hide("slow");
 	$("#container-admin").append("<h2>Saindo do Sistema</h2>");
-	setTimeout(function() {window.location.href = 'index.html'}, 800);
+	
+	$.post("login.php", {modo: "logout-admin"},
+		function(){
+			setTimeout(function() {window.location.href = 'index.html'}, 800);
+		}
+	);
  });
 
 function cleanCss(){
@@ -216,58 +229,68 @@ function loadadmin(){
 function validaLogin(login){
 	usuariovalido = false;
 	senhavalida = false
+
 	if (login == 'aluno') {
-		if ($("#aluno-usuario").val() == ""){
-			$(".danger-usuario").text("Preencha o campo R.A.");
-			$(".danger-usuario").show("fast");
-			$("#aluno-usuario").css("border-color", "#a94442");
-		}
-		else{
-			$(".danger-usuario").hide("fast");
-			$("#aluno-usuario").css("border-color", "");
-			usuariovalido = true;
-		}
-		if ($("#aluno-senha").val() == ""){
-			$(".danger-senha").text("Preencha o campo Senha");
-			$(".danger-senha").show("fast");
-			$("#aluno-senha").css("border-color", "#a94442");
-		}
-		else{
-			$(".danger-senha").hide("fast");
-			$("#aluno-senha").css("border-color", "");
-			senhavalida = true;
-		}
-		if (usuariovalido == true && senhavalida == true) {
-			$("#main").hide("slow");
-			$("#container").append("<h2>Acessando o sistema</h2>");
-			setTimeout(function() {window.location.href = 'aluno.html'}, 800);
-		}
+		$.post(
+			"login.php",
+			{modo: "login-aluno", ra: $("#aluno-usuario").val(), senha: $("#aluno-senha").val()},
+			function(retorno){
+				if ($("#aluno-usuario").val() == "" || retorno == "ERROUSUARIO"){
+					$(".danger-usuario").text("Usuário incorreto");
+					$(".danger-usuario").show("fast");
+					$("#aluno-usuario").css("border-color", "#a94442");
+				}else{
+					$(".danger-usuario").hide("fast");
+					$("#aluno-usuario").css("border-color", "");
+					usuariovalido = true;
+				}
+				if ($("#aluno-senha").val() == "" || retorno == "ERROSENHA"){
+					$(".danger-senha").text("Senha incorreta");
+					$(".danger-senha").show("fast");
+					$("#aluno-senha").css("border-color", "#a94442");
+				}else{
+					$(".danger-senha").hide("fast");
+					$("#aluno-senha-senha").css("border-color", "");
+					senhavalida = true;
+				}
+				if (retorno == "OK"){
+					$("#main").hide("slow");
+					$("#container").append("<h2>Acessando o sistema</h2>");
+					setTimeout(function() {window.location.href = 'aluno.php'}, 800);	
+				}
+			}
+
+		);
 	}else if(login == 'professor'){
-		if ($("#professor-usuario").val() == ""){
-			$(".danger-usuario").text("Preencha o campo Usuário");
-			$(".danger-usuario").show("fast");
-			$("#professor-usuario").css("border-color", "#a94442");
-		}
-		else{
-			$(".danger-usuario").hide("fast");
-			$("#professor-usuario").css("border-color", "");
-			usuariovalido = true;
-		}
-		if ($("#professor-senha").val() == ""){
-			$(".danger-senha").text("Preencha o campo Senha");
-			$(".danger-senha").show("fast");
-			$("#professor-senha").css("border-color", "#a94442");
-		}
-		else{
-			$(".danger-senha").hide("fast");
-			$("#professor-senha").css("border-color", "");
-			senhavalida = true;
-		}
-		if (usuariovalido == true && senhavalida == true) {
-			$("#main").hide("slow");
-			$("#container").append("<h2>Acessando o sistema</h2>");
-			setTimeout(function() {window.location.href = 'professor.html'}, 800);
-		}
+		$.post(
+			"login.php", 
+			{modo: "login-professor", usuario: $("#professor-usuario").val(), senha: $("#professor-senha").val() }, 
+			function(retorno){
+				if ($("#professor-usuario").val() == "" || retorno == "ERROUSUARIO"){
+					$(".danger-usuario").text("Usuário incorreto");
+					$(".danger-usuario").show("fast");
+					$("#professor-usuario").css("border-color", "#a94442");
+				}else{
+					$(".danger-usuario").hide("fast");
+					$("#professor-usuario").css("border-color", "");
+					usuariovalido = true;
+				}
+				if ($("#professor-senha").val() == "" || retorno == "ERROSENHA"){
+					$(".danger-senha").text("Senha incorreta");
+					$(".danger-senha").show("fast");
+					$("#professor-senha").css("border-color", "#a94442");
+				}else{
+					$(".danger-senha").hide("fast");
+					$("#professor-senha").css("border-color", "");
+					senhavalida = true;
+				}
+				if (retorno == "OK"){
+					$("#main").hide("slow");
+					$("#container").append("<h2>Acessando o sistema</h2>");
+					setTimeout(function() {window.location.href = 'professor.php'}, 800);	
+				}
+			}
+		);	
 	}else if(login == 'admin'){
 		$.post(
 			"login.php", 

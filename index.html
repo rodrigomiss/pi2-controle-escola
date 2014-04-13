@@ -29,41 +29,42 @@
           <button id="btn-admin" type="button" class="btn btn-default">Área do Administrador</button>
         </div>
         <div id="login-aluno" class="login" style="display:none">
-          <form name="form-aluno-login" id="form-aluno-login" method="post" action="">
-            <input type="hidden" name="modo" value="login-aluno">
+          <input type="hidden" name="modo" value="login-aluno">
+          <div class="input-group">
+            <span class="input-group-addon glyphicon glyphicon-user"></span>
+            <input id="aluno-usuario" type="text" class="form-control" placeholder="R.A.">
+          </div>
+          <div class="alert alert-danger danger-usuario" style="display:none"></div>
+          <div class="input-group">
+            <span class="input-group-addon glyphicon glyphicon-asterisk"></span>
+            <input id="aluno-senha" type="password" class="form-control" placeholder="Senha">
+          </div>
+          <div class="alert alert-danger danger-senha" style="display:none"></div>
+          <button type="subimit" id="btn-login-aluno" class="btn btn-default btn-lg btn-login">
+            <span class="glyphicon glyphicon-log-in"></span> Entrar
+          </button>
+          <div class="forgot-password"><a href="#">Esqueci minha senha</a></div>
+        </div>
+        
+
+        <div id="login-professor" class="login" style="display:none">
+          <form name="form-professor-login" id="form-professor-login" method="post" action="">
             <div class="input-group">
               <span class="input-group-addon glyphicon glyphicon-user"></span>
-              <input id="aluno-usuario" name="aluno-ra" type="text" class="form-control" placeholder="R.A.">
+              <input id="professor-usuario" type="text" class="form-control" placeholder="Usuário">
             </div>
             <div class="alert alert-danger danger-usuario" style="display:none"></div>
             <div class="input-group">
               <span class="input-group-addon glyphicon glyphicon-asterisk"></span>
-              <input id="aluno-senha" name="aluno-senha" type="password" class="form-control" placeholder="Senha">
+              <input id="professor-senha" type="password" class="form-control" placeholder="Senha">
             </div>
             <div class="alert alert-danger danger-senha" style="display:none"></div>
-            <button type="subimit" id="btn-login-aluno" class="btn btn-default btn-lg btn-login">
+            <button type="button" id="btn-login-professor" class="btn btn-default btn-lg btn-login">
               <span class="glyphicon glyphicon-log-in"></span> Entrar
             </button>
             <div class="forgot-password"><a href="#">Esqueci minha senha</a></div>
           </div>
         </form>
-
-        <div id="login-professor" class="login" style="display:none">
-          <div class="input-group">
-            <span class="input-group-addon glyphicon glyphicon-user"></span>
-            <input id="professor-usuario" type="text" class="form-control" placeholder="Usuário">
-          </div>
-          <div class="alert alert-danger danger-usuario" style="display:none"></div>
-          <div class="input-group">
-            <span class="input-group-addon glyphicon glyphicon-asterisk"></span>
-            <input id="professor-senha" type="password" class="form-control" placeholder="Senha">
-          </div>
-          <div class="alert alert-danger danger-senha" style="display:none"></div>
-          <button type="button" id="btn-login-professor" class="btn btn-default btn-lg btn-login">
-            <span class="glyphicon glyphicon-log-in"></span> Entrar
-          </button>
-          <div class="forgot-password"><a href="#">Esqueci minha senha</a></div>
-        </div>
 
         <div id="login-admin" class="login" style="display:none">
           <form name="form-admin-login" id="form-admin-login" method="post" action="">
