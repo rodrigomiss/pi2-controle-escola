@@ -3,7 +3,8 @@
 		$indice = trim($dados["indice"]);
 		$cadastro = array(
 			"codigo" => $dados["codigo"],
-			"disciplina" => $dados["disciplina"]
+			"disciplina" => $dados["disciplina"],
+			"professor" => $dados["professor"]
 		);		
 
 		if ($indice == "-1"){

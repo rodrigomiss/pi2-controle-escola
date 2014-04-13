@@ -6,7 +6,7 @@
     exit;
   }
   
-  //$modo = isset($_POST["modo"]) ? $_POST["modo"] : $_GET['modo'];
+  $modo = isset($_POST["modo"]) ? $_POST["modo"] : $_GET['modo'];
 ?>
 
 
