@@ -413,3 +413,15 @@ $("#cadastro-disciplina-form").submit(function(event){
 	$.post("form-cadastro-disciplina.php", $("#form-cadastro-disciplina").serialize());
 });
 
+/*cadastro de notas area do professor*/
+function alterar_disciplina(){
+	$.post(
+		"includes/professor/notas.php", 
+		{disciplina: $("#professor-disciplinas-select").val()},
+		function(retorno){
+			$("#professor-notas").html(retorno);
+			$("#professor-notas-list p").html($("#professor-disciplinas-select option:selected").text());
+		}	
+	);	
+}
+
