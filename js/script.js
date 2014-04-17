@@ -417,7 +417,7 @@ $("#cadastro-disciplina-form").submit(function(event){
 function alterar_disciplina(){
 	$.post(
 		"includes/professor/notas.php", 
-		{disciplina: $("#professor-disciplinas-select").val()},
+		{modo: "alterar_disciplina", disciplina: $("#professor-disciplinas-select").val()},
 		function(retorno){
 			$("#professor-notas").html(retorno);
 			$("#professor-notas-list p").html($("#professor-disciplinas-select option:selected").text());
@@ -425,3 +425,22 @@ function alterar_disciplina(){
 	);	
 }
 
+function mostra_campo_alterar_nota(objText){
+	var nota_text = $("#nota_text" + objText);	
+	nota_text.html("<input type='text' id='nota"+objText+"' value='" + nota_text.html() + "'>");
+
+	nota_text.change(function(event){
+		$.post(
+			"includes/professor/notas.php",
+			{
+				modo: "gravar_alteracao_nota", 
+				aluno: $("#idx_aluno_" + objText).val(),
+				disciplina: $("#idx_disciplina_" + objText).val(), 
+				nota: $("#nota" + objText).val()
+			},
+			function(retorno){
+				$("#professor-notas").html(retorno);	
+			}
+		);
+	});
+}
