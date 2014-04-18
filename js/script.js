@@ -183,8 +183,10 @@ function hideDivs(type){
 	if (type == 'aluno'){
 		$("#aluno-inicial").hide("fast");
 	 	$("#aluno-disciplinas").hide("fast");
+	 	$("#aluno-matricula").hide("fast");
 	 	$("#aluno-notas").hide("fast");
 	  	$("#btn-aluno-disciplinas").parent().removeClass("active");
+	  	$("#btn-aluno-matricula").parent().removeClass("active");
 	  	$("#btn-aluno-matricula").parent().removeClass("active");
 	 	$("#btn-aluno-notas").parent().removeClass("active");
 
