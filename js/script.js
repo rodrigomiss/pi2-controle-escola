@@ -325,93 +325,87 @@ function validaLogin(login){
 };
 
 /*cadastro de alunos da area admin */
-$("#cadastro-aluno-form").submit(function(event){
-	$.post("form-cadastro-aluno.php", $("#form-cadastro-aluno").serialize());
-});
-
-function carregaFormEditarAluno(indice){
-	$.get("includes/admin/form-cadastro-aluno.php", {id: indice},
+function carregaFormAluno(varModo, varIndice){
+	$.post(
+		"includes/admin/aluno.php", {modo: varModo, id: varIndice},
 		function(retorno){
-			$("#retorno_ajax").html(retorno);
+			$("#retorno_ajax_aluno").html(retorno);
 		}
 	);
 }
 
-function removeAluno(indice){
-	$.post("includes/admin/lista-cadastro-aluno.php", {modo: "remove", id: indice},
-		function(retorno){
-			$("#retorno_ajax").html(retorno);
-		}
-	);
-}
+function salvarCadastroAluno(){
+	$.post(
+		"includes/admin/aluno.php", 
+		{
+			modo: "gravar-cadastro",
+			id: $("#id").val(),
+			nome: $("#nome").val(),
+			ra: $("#ra").val(),
+			senha: $("#senha").val()
+		},
 
-function carregaListaAlunos(){
-	$.post("includes/admin/lista-cadastro-aluno.php", {modo: "listar"},
 		function(retorno){
-			$("#retorno_ajax").html(retorno);
-		}
-	);	
+			$("#retorno_ajax_aluno").html(retorno);	
+		}		
+	);
 }
 
 
 /*cadastro de professor na area admin*/
-function carregaFormEditarProfessor(indice){
-	$.post("includes/admin/form-cadastro-professor.php", {id: indice},
+function carregaFormProfessor(varModo, varIndice){
+	$.post(
+		"includes/admin/professor.php", {modo: varModo, id: varIndice},
 		function(retorno){
 			$("#retorno_ajax_professor").html(retorno);
 		}
 	);
 }
 
-function removeProfessor(indice){
-	$.post("includes/admin/lista-cadastro-professor.php", {modo: "remove", id: indice},
+function salvarCadastroProfessor(){
+	$.post(
+		"includes/admin/professor.php", 
+		{
+			modo: "gravar-cadastro",
+			id: $("#indice").val(),
+			nome: $("#nome").val(),
+			codigo: $("#codigo").val(),
+			senha: $("#senha").val()
+		},
+
 		function(retorno){
-			$("#retorno_ajax_professor").html(retorno);
-		}
+			$("#retorno_ajax_professor").html(retorno);	
+		}		
 	);
 }
-
-function carregaListaProfessores(){
-	$.post("includes/admin/lista-cadastro-professor.php", {modo: "listar"},
-		function(retorno){
-			$("#retorno_ajax_professor").html(retorno);
-		}
-	);	
-}
-
-$("#cadastro-professor-form").submit(function(event){
-	$.post("form-cadastro-professor.php", $("#form-cadastro-professor").serialize());
-});
-
 
 /*cadastro disciplina na area admin*/
-function carregaFormEditarDisciplina(indice){
-	$.post("includes/admin/form-cadastro-disciplina.php", {id: indice},
+function carregaFormDisciplina(varModo, varIndice){
+	$.post(
+		"includes/admin/disciplina.php", {modo: varModo, id: varIndice},
 		function(retorno){
 			$("#retorno_ajax_disciplina").html(retorno);
 		}
 	);
 }
 
-function removeDisciplina(indice){
-	$.post("includes/admin/lista-cadastro-disciplina.php", {modo: "remove", id: indice},
+function salvarCadastroDisciplina(){
+	$.post(
+		"includes/admin/disciplina.php", 
+		{
+			modo: "gravar-cadastro",
+			id: $("#id").val(),
+			codigo: $("#codigo").val(),
+			disciplina: $("#disciplina").val(),
+			professor: $("#professor option:selected").val()
+		},
+
 		function(retorno){
-			$("#retorno_ajax_disciplina").html(retorno);
-		}
+			$("#retorno_ajax_disciplina").html(retorno);	
+		}		
 	);
 }
 
-function carregaListaDisciplinas(){
-	$.post("includes/admin/lista-cadastro-disciplina.php", {modo: "listar"},
-		function(retorno){
-			$("#retorno_ajax_disciplina").html(retorno);
-		}
-	);	
-}
-
-$("#cadastro-disciplina-form").submit(function(event){
-	$.post("form-cadastro-disciplina.php", $("#form-cadastro-disciplina").serialize());
-});
 
 /*cadastro de notas area do professor*/
 function alterar_disciplina(){

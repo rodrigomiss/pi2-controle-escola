@@ -63,36 +63,18 @@
         </div>
 
         <div id="admin-alunos" style="display:none">
-          <div id="retorno_ajax">
-            <?php      
-              if ($modo == "cadastrar-aluno" || $modo == "editar-aluno"){              
-                require_once "includes/admin/form-cadastro-aluno.php";
-              }else{
-                require_once "includes/admin/lista-cadastro-aluno.php";
-              }          
-            ?>
+          <div id="retorno_ajax_aluno">
+            <?php require_once "includes/admin/aluno.php"; ?>
           </div>
         </div>        
         <div id="admin-professores" style="display:none">
           <div id="retorno_ajax_professor">
-            <?php      
-              if ($modo == "cadastrar-professor" || $modo == "editar-professor"){              
-                require_once "includes/admin/form-cadastro-professor.php";
-              }else{
-                require_once "includes/admin/lista-cadastro-professor.php";
-              }          
-            ?>
+            <?php require_once "includes/admin/professor.php"; ?>
           </div>
         </div>
         <div id="admin-disciplinas" style="display:none">
           <div id="retorno_ajax_disciplina">
-            <?php      
-              if ($modo == "cadastrar-disciplina" || $modo == "editar-disciplina"){              
-                require_once "includes/admin/form-cadastro-disciplina.php";
-              }else{
-                require_once "includes/admin/lista-cadastro-disciplina.php";
-              }          
-            ?>
+            <?php require_once "includes/admin/disciplina.php"; ?>
           </div>
         </div>
         <div id="admin-notas" style="display:none">
