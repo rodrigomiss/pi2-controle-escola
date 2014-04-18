@@ -1,7 +1,8 @@
 <?php
   session_start();
+  require_once "includes/funcoes.php";
 
-  if (!isset($_SESSION["administrador"])){
+  if (!isset($_SESSION[NOME_SESSAO_LOGIN_ADMINISTRADORES])){
     header("Location: index.html?modo=login-admin-expirado");
     exit;
   }

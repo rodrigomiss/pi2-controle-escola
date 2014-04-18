@@ -1,6 +1,8 @@
 <?php
 session_start();
-define("NOME_SESSAO_ADMINISTRADORES", "administrador");
+define("NOME_SESSAO_LOGIN_ADMINISTRADORES", "login_admin");
+define("NOME_SESSAO_LOGIN_ALUNOS", "login_aluno");
+define("NOME_SESSAO_LOGIN_PROFESSORES", "login_professor");
 define("NOME_SESSAO_ALUNOS", "alunos");
 define("NOME_SESSAO_PROFESSORES", "professores");
 define("NOME_SESSAO_DISCIPLINAS", "disciplinas");

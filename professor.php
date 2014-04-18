@@ -2,7 +2,7 @@
   session_start();
   require_once "includes/funcoes.php";
 
-  if (!isset($_SESSION[NOME_SESSAO_PROFESSORES])){
+  if (!isset($_SESSION[NOME_SESSAO_LOGIN_PROFESSORES])){
     header("Location: index.html?modo=login-professor-expirado");
     exit;
   }

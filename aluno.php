@@ -1,9 +1,12 @@
 <?php
   session_start();
+  require_once "includes/funcoes.php";
 
-  if (!isset($_SESSION["aluno"])){
+  if (!isset($_SESSION[NOME_SESSAO_LOGIN_ALUNOS])){
     header("Location: index.html?modo=login-aluno-expirado");
     exit;
+  }else{
+    echo "logado"; exit;
   }
   
   $modo = isset($_POST["modo"]) ? $_POST["modo"] : $_GET['modo'];
