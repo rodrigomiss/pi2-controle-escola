@@ -419,18 +419,20 @@ function alterar_disciplina(){
 	);	
 }
 
-function mostra_campo_alterar_nota(objText){
-	var nota_text = $("#nota_text" + objText);	
-	nota_text.html("<input type='text' id='nota"+objText+"' value='" + nota_text.html() + "'>");
+function mostra_campo_alterar_nota(textbox, idxAluno, idxDisciplina){
+	//ao clicar no botão alterar nota >>> formulario notas da area do professor
+	var inputbox = "<input type='text' class='inputbox nota' value=\""+$("#"+textbox).text()+"\">";
+	$("#"+textbox).html(inputbox);
+	$("input.inputbox").focus();
 
-	nota_text.change(function(event){
+	$("input.inputbox").blur(function(event){
 		$.post(
 			"includes/professor/notas.php",
 			{
 				modo: "gravar_alteracao_nota", 
-				aluno: $("#idx_aluno_" + objText).val(),
-				disciplina: $("#idx_disciplina_" + objText).val(), 
-				nota: $("#nota" + objText).val()
+				aluno: idxAluno,
+				disciplina: idxDisciplina,
+				nota: $(this).val()
 			},
 			function(retorno){
 				$("#professor-notas").html(retorno);	

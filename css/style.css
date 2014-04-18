@@ -148,3 +148,7 @@ body {
     width: 250px;
     margin-left: 325px;
 }
+
+.inputbox.nota{
+    width: 60px;
+}

@@ -12,7 +12,7 @@
 
     if ($modo == "gravar_alteracao_nota"){
       $idx_aluno = $_POST["aluno"];
-      $nota = (int) $_POST["nota"]; 
+      $nota = (float) $_POST["nota"]; 
       $alterou_nota = false;       
       $nova_nota = array(
         "aluno" => $idx_aluno,
@@ -37,6 +37,8 @@
     }
 
     $disciplinas = listData(NOME_SESSAO_DISCIPLINAS);
+    $nome_disciplina_selecionada = ($idx_disciplina > -1) ? $disciplinas[$idx_disciplina]["disciplina"] : "Nenhuma disciplina selecionada";
+
     foreach ($disciplinas as $indice => $disciplina) {
       echo "<option " . ($idx_disciplina == $indice ? "selected" : "") . " value=$indice>$disciplina[disciplina]</option>";
     }
@@ -47,7 +49,7 @@
 <div id="professor-notas-list"class="panel panel-default">
   <div class="panel-heading">Lista de Alunos</div>
   <div class="panel-body">
-    <p>Nenhuma disciplina selecionada</p>
+    <p><?php echo $nome_disciplina_selecionada; ?></p>
   </div>
   <table class="table table-bordered">
     <thead>
@@ -69,11 +71,14 @@
             <td>$aluno[ra]</td>
             <td align='left'>$aluno[nome]</td>
             <td>
-              <span id='nota_text" . $idx_aluno . "'>" . number_format($notas_aluno[0]["nota"], 2) . "</span>
-              <input type='hidden' id='idx_disciplina_$idx_aluno' value='$idx_disciplina'></input>
-              <input type='hidden' id='idx_aluno_$idx_aluno' value='$idx_aluno'></input>
+              <div id='nota" . $idx_aluno . "'>" . number_format($notas_aluno[0]["nota"], 2) . "</div>
             </td>
-            <td><button class=\"btn btn-default btn-xs btn-set-nota\" onClick=\"javascript:mostra_campo_alterar_nota('$idx_aluno');\"><span class=\"glyphicon glyphicon-edit\"></span></button></td>
+            <td>
+              <button class=\"btn btn-default btn-xs btn-set-nota\" 
+                onClick=\"javascript:mostra_campo_alterar_nota('nota$idx_aluno', '$idx_aluno', '$idx_disciplina');\">
+                <span class=\"glyphicon glyphicon-edit\"></span>
+              </button>
+            </td>
           </tr>";  
         }
       }
