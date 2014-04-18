@@ -48,6 +48,13 @@ $("#btn-aluno-disciplinas").click(function(event){
   	$("#btn-aluno-disciplinas").parent().addClass("active");
  });
 
+$("#btn-aluno-matricula").click(function(event){
+ 	event.preventDefault();
+ 	hideDivs('aluno');
+ 	$("#aluno-matricula").fadeIn("fast");
+  	$("#btn-aluno-matricula").parent().addClass("active");
+ });
+
 $("#btn-aluno-notas").click(function(event){
  	event.preventDefault();
  	hideDivs('aluno');
@@ -178,6 +185,7 @@ function hideDivs(type){
 	 	$("#aluno-disciplinas").hide("fast");
 	 	$("#aluno-notas").hide("fast");
 	  	$("#btn-aluno-disciplinas").parent().removeClass("active");
+	  	$("#btn-aluno-matricula").parent().removeClass("active");
 	 	$("#btn-aluno-notas").parent().removeClass("active");
 
 	}else if (type == 'professor'){

@@ -40,6 +40,7 @@
             <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav">
                 <li><a id="btn-aluno-disciplinas" href="#">Disciplinas</a></li>
+                <li><a id="btn-aluno-matricula" href="#">Matrícula</a></li>
                 <li><a id="btn-aluno-notas" href="#">Notas</a></li>
                 <li><a id="btn-aluno-sair" href="#"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
               </ul>
@@ -85,6 +86,9 @@
               </tr>
             </table>
           </div>
+        </div>
+        <div id="aluno-matricula" style="display:none">
+          <h4>Página de matrícula</h4>
         </div>
         <div id="aluno-notas" style="display:none">
           <h3>Notas</h3>
