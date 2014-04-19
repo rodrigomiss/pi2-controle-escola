@@ -12,12 +12,16 @@
 
     if ($modo == "gravar_alteracao_nota"){
       $idx_aluno = $_POST["aluno"];
-      $nota = (float) $_POST["nota"]; 
+      $trabalho = (float) $_POST["trabalho"]; 
+      $prova1 = (float) $_POST["prova1"]; 
+      $prova2 = (float) $_POST["prova2"]; 
       $alterou_nota = false;       
       $nova_nota = array(
         "aluno" => $idx_aluno,
         "disciplina" => $idx_disciplina,
-        "nota" => $nota
+        "trabalho" => $trabalho,
+        "prova1" => $prova1,
+        "prova2" => $prova2
       );
 
       $notas = array();
@@ -54,9 +58,11 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-      <th>R.A.</th>
-      <th>Nome</th>
-      <th colspan="2">Nota</th>
+        <th>R.A.</th>
+        <th>Nome</th>
+        <th colspan="2">Trabalho</th>
+        <th colspan="2">Prova1</th>
+        <th colspan="2">Prova2</th>
       </tr>
     </thead>
     <?php      
@@ -71,11 +77,29 @@
             <td>$aluno[ra]</td>
             <td align='left'>$aluno[nome]</td>
             <td>
-              <div id='nota" . $idx_aluno . "'>" . number_format($notas_aluno[0]["nota"], 2) . "</div>
+              <div id='trabalho" . $idx_aluno . "'>" . number_format($notas_aluno[0]["trabalho"], 2) . "</div>
             </td>
             <td>
               <button class=\"btn btn-default btn-xs btn-set-nota\" 
-                onClick=\"javascript:mostra_campo_alterar_nota('nota$idx_aluno', '$idx_aluno', '$idx_disciplina');\">
+                onClick=\"javascript:mostra_campo_alterar_nota('trabalho$idx_aluno', '$idx_aluno', '$idx_disciplina');\">
+                <span class=\"glyphicon glyphicon-edit\"></span>
+              </button>
+            </td>
+            <td>
+              <div id='prova1" . $idx_aluno . "'>" . number_format($notas_aluno[0]["prova1"], 2) . "</div>
+            </td>
+            <td>
+              <button class=\"btn btn-default btn-xs btn-set-nota\" 
+                onClick=\"javascript:mostra_campo_alterar_nota('prova1$idx_aluno', '$idx_aluno', '$idx_disciplina');\">
+                <span class=\"glyphicon glyphicon-edit\"></span>
+              </button>
+            </td>
+            <td>
+              <div id='prova2" . $idx_aluno . "'>" . number_format($notas_aluno[0]["prova2"], 2) . "</div>
+            </td>
+            <td>
+              <button class=\"btn btn-default btn-xs btn-set-nota\" 
+                onClick=\"javascript:mostra_campo_alterar_nota('prova2$idx_aluno', '$idx_aluno', '$idx_disciplina');\">
                 <span class=\"glyphicon glyphicon-edit\"></span>
               </button>
             </td>

@@ -436,13 +436,17 @@ function mostra_campo_alterar_nota(textbox, idxAluno, idxDisciplina){
 	$("input.inputbox").focus();
 
 	$("input.inputbox").blur(function(event){
+		$("#"+textbox).html($(this).val());
+		
 		$.post(
 			"includes/professor/notas.php",
 			{
 				modo: "gravar_alteracao_nota", 
 				aluno: idxAluno,
 				disciplina: idxDisciplina,
-				nota: $(this).val()
+				trabalho: $("#trabalho"+idxAluno).html(),
+				prova1: $("#prova1"+idxAluno).html(),
+				prova2: $("#prova2"+idxAluno).html()
 			},
 			function(retorno){
 				$("#professor-notas").html(retorno);	
