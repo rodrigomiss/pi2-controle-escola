@@ -6,6 +6,7 @@ define("NOME_SESSAO_LOGIN_PROFESSORES", "login_professor");
 define("NOME_SESSAO_ALUNOS", "alunos");
 define("NOME_SESSAO_PROFESSORES", "professores");
 define("NOME_SESSAO_DISCIPLINAS", "disciplinas");
+define("NOME_SESSAO_MATRICULAS", "matricula");
 define("NOME_SESSAO_NOTAS", "notas");
 
 function postData($data, $session_name, $index_edit = -1){
@@ -53,6 +54,30 @@ function listNotesByStudent($index_student, $notes = null){
 	foreach ($notes as $note) {
 		if ($note["aluno"] == $index_student)
 			$return[] = $note;
+	}
+
+	return $return;		
+}
+
+function listRegistrationByDisciplines($index_discipline, $array_registration = null){
+	$registrations = is_null($array_registration) ? $_SESSION[NOME_SESSAO_MATRICULAS] : $array_registration;
+	$return = array();
+
+	foreach ($registrations as $registration) {
+		if ($registration["disciplina"] == $index_discipline)
+			$return[] = $registration;
+	}
+	
+	return $return;	
+}
+
+function listRegistrationByStudent($index_student, $registrations = null){
+	$registrations = is_null($registrations) ? $_SESSION[NOME_SESSAO_MATRICULAS] : $registrations;
+	$return = array();
+
+	foreach ($registrations as $registration) {
+		if ($registration["aluno"] == $index_student)
+			$return[] = $registration;
 	}
 
 	return $return;		

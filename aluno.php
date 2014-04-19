@@ -5,17 +5,20 @@
   if (!isset($_SESSION[NOME_SESSAO_LOGIN_ALUNOS])){
     header("Location: index.html?modo=login-aluno-expirado");
     exit;
+  }else{
+    $idx_login_aluno = $_SESSION[NOME_SESSAO_LOGIN_ALUNOS];
+    $nome_login_aluno = $_SESSION[NOME_SESSAO_ALUNOS][$idx_login_aluno]['nome'];
   }
 
   $modo = isset($_POST["modo"]) ? $_POST["modo"] : $_GET['modo'];
+  // echo "<pre>";
+  // var_dump($nome_login_aluno); exit;
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Área do Aluno</title>
 
     <!-- Bootstrap -->
@@ -42,7 +45,7 @@
                 <li><a id="btn-aluno-disciplinas" href="#">Disciplinas</a></li>
                 <li><a id="btn-aluno-matricula" href="#">Matrícula</a></li>
                 <li><a id="btn-aluno-notas" href="#">Notas</a></li>
-                <li><p class="navbar-text navbar-show-user">Logado como <strong><?= $_SESSION["login_aluno"] ?></strong></p></li>
+                <li><p class="navbar-text navbar-show-user">Logado como <strong><?= $nome_login_aluno; ?></strong></p></li>
                 <li><a id="btn-aluno-sair" href="#"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
               </ul>
             </div>
@@ -53,40 +56,7 @@
           <p>Aqui você pode acessar as disciplinas em que está matriculado, verificar suas notas e também calcular sua média.</p>
         </div>
         <div id="aluno-disciplinas" style="display:none">
-<!--           <h3>Disciplinas</h3> -->
-         <div id="aluno-disciplinas-list" class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Disciplinas</div>
-            <div class="panel-body">
-              <p>Lista das disciplinas matriculadas.</p>
-            </div>
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                <th>Código</th>
-                <th>Nome</th>
-                <th>Nota</th>
-                </tr>
-              </thead>
-              <tfoot>
-              </tfoot>
-              <tr>
-                <td>00001</td>
-                <td>Disciplina 1</td>
-                <td>7.5</td>
-              </tr>
-              <tr>
-                <td>00005</td>
-                <td>Disciplina 5</td>
-                <td>8.0</td>
-              </tr>
-              <tr>
-                <td>00007</td>
-                <td>Disciplina 7</td>
-                <td>6.5</td>
-              </tr>
-            </table>
-          </div>
+          <?php require_once "includes/aluno/disciplinas.php"; ?>
         </div>
         <div id="aluno-matricula" style="display:none">
           <?php require_once "includes/aluno/matricula.php"; ?>

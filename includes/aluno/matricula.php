@@ -1,21 +1,61 @@
+<?php
+  session_start();
+  $modo = isset($_POST["modo"]) ? $_POST["modo"] : "acessado-pelo-menu-principal";
+  $idx_disciplina = isset($_POST["disciplina"]) ? (int) $_POST["disciplina"] : -1;
+  require_once ($modo == "acessado-pelo-menu-principal") ? "includes/funcoes.php" : "../funcoes.php";
+
+  if ($modo == "fazer-matricula"){
+    $matricula = array(
+      "aluno" => $_POST["aluno"],
+      "disciplina" => $idx_disciplina
+    );  
+
+    postData($matricula, NOME_SESSAO_MATRICULAS);
+  }
+?>
+
+<h4>Página de matrícula</h4>
+<br/>
+
+<div id="aluno-disciplinas-list"class="panel panel-default">
 <div id="aluno-matricula-list" class="panel panel-default">
   <div class="panel-heading">Disciplinas</div>
   <div class="panel-body">
     <p>Lista das disciplinas disponíveis para matrícula</p>
   </div>
-  <ul class="list-group">
-  <?php
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Professor</th>
+        <th>Opção</th>
+      </tr>
+    </thead>
+    <?php
+      $idx_login_aluno = $_SESSION[NOME_SESSAO_LOGIN_ALUNOS];
       $disciplinas = listData(NOME_SESSAO_DISCIPLINAS);
-      foreach ($disciplinas as $disciplina) {
-        echo "
-        <li class='list-group-item'>
-          <h4 class='list-group-item-heading'>$disciplina[disciplina]</h4>
-          <p class='list-group-item-text'>Código: $disciplina[codigo]</p>
-          <p class='list-group-item-text'>Professor: $disciplina[professor]</p>
-          <p class='list-group-item-text'><button class=\"btn btn-default btn-matricular\" onClick=\"\"><span class=\"glyphicon glyphicon-hand-up\"></span> Matricular-se</button></p>
-        </li>";
+      $matriculas = listData(NOME_SESSAO_MATRICULAS);
+      $matriculas = listRegistrationByStudent($idx_login_aluno, $matriculas); //array com todas as disciplinas que o aluno esta matriculado
+      
+      foreach ($disciplinas as $idx_disciplina => $disciplina) {
+        $matricula_disciplina = listRegistrationByDisciplines($idx_disciplina, $matriculas);
+            
+        if (count($matricula_disciplina) <= 0){
+          echo 
+          "<tr>
+              <td>$disciplina[codigo]</td>
+              <td align=left>$disciplina[disciplina]</td>
+              <td align=left>$disciplina[professor]</td>
+              <td>
+                <button class='btn btn-default btn-matricular' 
+                  onClick=\"javascript:fazerMatricula('$idx_login_aluno', '$idx_disciplina');\" title='Fazer matrícula'> 
+                  <span class=\"glyphicon glyphicon-hand-up\"></span> Matricular-se
+                </button>
+              </td>
+          </tr>";
+        }
       }
     ?>
-
-  </ul>
+  </table>
 </div>

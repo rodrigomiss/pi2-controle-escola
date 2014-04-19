@@ -454,3 +454,20 @@ function mostra_campo_alterar_nota(textbox, idxAluno, idxDisciplina){
 		);
 	});
 }
+
+//area do aluno
+function fazerMatricula(idxAluno, idxDisciplina){
+	$.post(
+		"includes/aluno/matricula.php", 
+		{modo: "fazer-matricula", aluno: idxAluno, disciplina: idxDisciplina},
+		function(retorno){
+			$("#aluno-matricula").html(retorno);
+
+			$.post("includes/aluno/disciplinas.php", {modo: "atualizar"},
+				function(retorno2){
+					$("#aluno-disciplinas").html(retorno2);
+				}
+			);
+		}	
+	);	
+}

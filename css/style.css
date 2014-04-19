@@ -127,15 +127,6 @@ h2 {
     width: 60px;
 }
 
-#aluno-matricula-list{
-    width: 400px;
-    margin-left: 250px;
-}
-
-#aluno-matricula-list button{
-    margin-top: 10px;
-}
-
 #professores-cadastrados table th.codigo, #alunos-cadastrados table th.codigo, #disciplinas-cadastradas table th.codigo{
     width: 15%;
 }
