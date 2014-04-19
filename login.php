@@ -62,6 +62,6 @@
 
 		echo "ERROUSUARIO";
 	}elseif ($modo == "logout-aluno"){
-		unset($_SESSION[NOME_SESSAO_ALUNOS]);
+		unset($_SESSION[NOME_SESSAO_LOGIN_ALUNOS]);
 	}
 ?>
