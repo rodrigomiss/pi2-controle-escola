@@ -1,12 +1,12 @@
 body { 
 	text-align: center;
- }
+}
 
- h2 {
+h2 {
  	margin-top: 30px;
- }
+}
 
- #container {
+#container {
     width: 500px;
     height: auto;
     border: 1px solid #ccc;
@@ -16,10 +16,9 @@ body {
     margin-left: -250px;
     margin-top: 50px;
     padding-bottom: 25px;
+}
 
- }
-
-  #container-aluno {
+#container-aluno, #container-professor, #container-admin {
     width: 900px;
     height: auto;
     border: 1px solid #ccc;
@@ -29,92 +28,61 @@ body {
     margin-left: -450px;
     margin-top: 50px;
     padding-bottom: 25px;
- }
+}
 
- #aluno-disciplinas-list, #professor-notas-list{
+#aluno-disciplinas-list, #professor-notas-list{
     width: 500px;
     margin-left: 200px;
 }
 
-   #container-professor {
-    width: 900px;
-    height: auto;
-    border: 1px solid #ccc;
-    border-radius: 1px;
-    position: relative;
-    left: 50%;
-    margin-left: -450px;
-    margin-top: 50px;
-    padding-bottom: 25px;
-
- }
-
-    #container-admin {
-    width: 900px;
-    height: auto;
-    border: 1px solid #ccc;
-    border-radius: 1px;
-    position: relative;
-    left: 50%;
-    margin-left: -450px;
-    margin-top: 50px;
-    padding-bottom: 25px;
-
- }
-
-   .danger-usuario, .danger-senha{
+.danger-usuario, .danger-senha{
     width: 300px;
     position: relative;
     left: 50%;
     margin-left: -150px;
+}
 
- }
-
- .login {
- 	margin-top: 10px;
- 	font-weight: bold;
- }
+.login {
+    margin-top: 10px;
+    font-weight: bold;
+}
 
 .login .input-group{;
 	max-width: 450px;
 	margin: 10px 0 10px 25px;
 }
 
- .login .input-group-addon {
+.login .input-group-addon {
  	min-width: 39px;
- }
+}
 
- .login .forgot-password {
+.login .forgot-password {
  	margin-top: 10px;
- }
+}
 
- .form-control {
+.form-control {
  	margin-top: 1px;
  	margin-bottom: -1px !important;
- }
+}
 
- #main-title{
-
- }
-
- #btn-aluno-sair {
+#btn-aluno-sair {
     margin-left: 515px;
- }
+}
 
-  #btn-professor-sair {
+#btn-professor-sair {
     margin-left: 485px;
- }
+}
 
-   #btn-admin-sair {
+#btn-admin-sair {
     margin-left: 272px;
- }
+}
 
- .navbar {
+.navbar {
     border-top: 0;
     border-left: 0;
     border-right: 0;
     border-radius: 0;
- }
+}
 
 /*cadastro de alunos, professores e discipinas area admin*/
 #cadastro-aluno-list, #cadastro-professor-list, #cadastro-disciplina-list{
