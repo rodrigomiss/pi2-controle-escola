@@ -6,7 +6,6 @@
     header("Location: index.html?modo=login-admin-expirado");
     exit;
   }
-  
   $modo = isset($_POST["modo"]) ? $_POST["modo"] : $_GET['modo'];
 ?>
 
@@ -52,6 +51,7 @@
                 <li><a id="btn-admin-professores" href="#">Professores</a></li>
                 <li><a id="btn-admin-disciplinas" href="#">Disciplinas</a></li>
                 <li><a id="btn-admin-notas" href="#">Notas</a></li>
+                <li><p class="navbar-text navbar-show-user">Logado como <strong><?= $_SESSION["login_admin"] ?></strong></p></li>
                 <li><a id="btn-admin-sair" href="#"><span class="glyphicon glyphicon-log-in"></span> Sair</a></li>
               </ul>
             </div>
