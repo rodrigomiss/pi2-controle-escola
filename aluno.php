@@ -89,7 +89,7 @@
           </div>
         </div>
         <div id="aluno-matricula" style="display:none">
-          <h4>Página de matrícula</h4>
+          <?php require_once "includes/aluno/matricula.php"; ?>
         </div>
         <div id="aluno-notas" style="display:none">
           <h3>Notas</h3>

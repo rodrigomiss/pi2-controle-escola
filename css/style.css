@@ -126,3 +126,12 @@ h2 {
 .inputbox.nota{
     width: 60px;
 }
+
+#aluno-matricula-list{
+    width: 400px;
+    margin-left: 250px;
+}
+
+#aluno-matricula-list button{
+    margin-top: 10px;
+}
