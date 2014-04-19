@@ -65,16 +65,21 @@ h2 {
  	margin-bottom: -1px !important;
 }
 
-#btn-aluno-sair {
+/*#btn-aluno-sair {
     margin-left: 515px;
-}
+}*/
 
-#btn-professor-sair {
+/*#btn-professor-sair {
     margin-left: 485px;
-}
+}*/
 
-#btn-admin-sair {
+/*#btn-admin-sair {
     margin-left: 272px;
+}*/
+
+.navbar-show-user {
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .navbar {

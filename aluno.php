@@ -42,6 +42,7 @@
                 <li><a id="btn-aluno-disciplinas" href="#">Disciplinas</a></li>
                 <li><a id="btn-aluno-matricula" href="#">Matrícula</a></li>
                 <li><a id="btn-aluno-notas" href="#">Notas</a></li>
+                <li><p class="navbar-text navbar-show-user">Logado como <strong><?= $_SESSION["login_aluno"] ?></strong></p></li>
                 <li><a id="btn-aluno-sair" href="#"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
               </ul>
             </div>
