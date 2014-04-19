@@ -108,5 +108,8 @@
       <button type="button" onclick="javascript:salvarCadastroDisciplina();" class="btn btn-default btn-salvar">
         <span class="glyphicon glyphicon-floppy-disk"></span> Salvar
       </button>
+      <button type="button" onClick="javascript:carregaFormDisciplina('listar', -1);" class="btn btn-default btn-cancelar">
+        <span class="glyphicon glyphicon-remove"></span> Cancelar
+      </button>
   </div>
 <?php endif; ?>

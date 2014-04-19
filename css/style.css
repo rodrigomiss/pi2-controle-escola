@@ -135,8 +135,9 @@ body {
     width: 350px;
  }
 
-#cadastro-aluno-list .btn-salvar, #cadastro-professor-list .btn-salvar, #cadastro-disciplina-list .btn-salvar{
+#cadastro-aluno-list .btn-salvar, #cadastro-aluno-list .btn-cancelar, #cadastro-professor-list .btn-salvar, #cadastro-professor-list .btn-cancelar, #cadastro-disciplina-list .btn-salvar, #cadastro-disciplina-list .btn-cancelar{
     margin-top: 6px;
+    margin-bottom: 6px;
  }
 
 #alunos-cadastrados-list, #professores-cadastrados-list, #disciplinas-cadastradas-list{

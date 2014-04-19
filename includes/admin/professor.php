@@ -94,6 +94,9 @@
         <button type="button" onclick="javascript:salvarCadastroProfessor();" class="btn btn-default btn-salvar">
           <span class="glyphicon glyphicon-floppy-disk"></span> Salvar
         </button>
+      <button type="button" onClick="javascript:carregaFormProfessor('listar', -1);" class="btn btn-default btn-cancelar">
+        <span class="glyphicon glyphicon-remove"></span> Cancelar
+      </button>
     </form>
   </div>
 <?php endif; ?>
