@@ -54,7 +54,7 @@
         </div>
         <div id="aluno-disciplinas" style="display:none">
 <!--           <h3>Disciplinas</h3> -->
-         <div id="aluno-disciplinas-list"class="panel panel-default">
+         <div id="aluno-disciplinas-list" class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading">Disciplinas</div>
             <div class="panel-body">

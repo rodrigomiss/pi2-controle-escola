@@ -28,18 +28,18 @@
 
 <?php if ($modo == "listar" || $modo == "acessado-pelo-menu-principal"): ?>
   <div id="alunos-cadastrados" style="display:visible">
-   <div id="alunos-cadastrados-list"class="panel panel-default">
+   <div id="alunos-cadastrados-list" class="panel panel-default">
       <div class="panel-heading">Alunos Cadastrados</div>
       <div class="panel-body">
-        <a href="javascript:carregaFormAluno('cadastrar', -1);"><img src="img/icone-adicionar" title="Novo Cadastro"></a>
-        <a href="javascript:carregaFormAluno('listar', -1);"><img src="img/icone-procurar" title="Listar/Procurar Cadastro"></a>
+        <a href="javascript:carregaFormAluno('cadastrar', -1);"><img src="img/icone-adicionar" alt="Novo" title="Novo Cadastro"></a>
+        <a href="javascript:carregaFormAluno('listar', -1);"><img src="img/icone-procurar" alt="Procurar" title="Listar/Procurar Cadastro"></a>
       </div>
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th width="15%">R.A</th>
+            <th class="codigo">R.A</th>
             <th>Nome</th>
-            <th width="20%">Opções</th>
+            <th class="opcoes">Opções</th>
           </tr>
         </thead>
 
@@ -52,8 +52,8 @@
             $nome = $aluno["nome"];
             //$link_editar = "<a href='?modo=editar-aluno&id=$indice&div=admin-alunos'><img src='img/icone-editar.png' width='22%'' title='Editar'></a>";
             //$link_remover = "<a href='?modo=remover-aluno&id=$indice'><img src='img/icone-remover.png' width='22%' title='Remover'></a>";
-            $link_editar = "<a href='javascript:carregaFormAluno(\"editar\", $idx_aluno);'><img src='img/icone-editar.png' width='22%'' title='Editar' caption='$ra'></a>";
-            $link_remover = "<a href='javascript:carregaFormAluno(\"remove\", $idx_aluno);'><img src='img/icone-remover.png' width='22%' title='Remover'></a>";
+            $link_editar = "<a href='javascript:carregaFormAluno(\"editar\", $idx_aluno);'><img src='img/icone-editar.png' width='22%'' alt='Editar' title='Editar' caption='$ra'></a>";
+            $link_remover = "<a href='javascript:carregaFormAluno(\"remove\", $idx_aluno);'><img src='img/icone-remover.png' width='22%' alt='Remover' title='Remover'></a>";
             
             echo                    
             "<tr>
@@ -69,11 +69,11 @@
   </div>
 <?php else:?>
   <div id="cadastro-aluno" style="display:visible">
-   <div id="cadastro-aluno-list"class="panel panel-default">
+   <div id="cadastro-aluno-list" class="panel panel-default">
     <div class="panel-heading">Cadastrado de Alunos</div>
     <div class="panel-body">
-      <a href="javascript:carregaFormAluno('cadastrar', -1);"><img src="img/icone-adicionar" title="Novo Cadastro"></a>
-      <a href="javascript:carregaFormAluno('listar', -1);"><img src="img/icone-procurar" title="Listar/Procurar Cadastro"></a>
+      <a href="javascript:carregaFormAluno('cadastrar', -1);"><img src="img/icone-adicionar" alt="Novo" title="Novo Cadastro"></a>
+      <a href="javascript:carregaFormAluno('listar', -1);"><img src="img/icone-procurar" alt="Procurar" title="Listar/Procurar Cadastro"></a>
     </div>
     <input type="hidden" id="id" value="<?= $idx_aluno; ?>">
   

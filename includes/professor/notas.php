@@ -50,7 +50,7 @@
 </select>
 <br/>
 
-<div id="professor-notas-list"class="panel panel-default">
+<div id="professor-notas-list" class="panel panel-default">
   <div class="panel-heading">Lista de Alunos</div>
   <div class="panel-body">
     <p><?php echo $nome_disciplina_selecionada; ?></p>

@@ -1,4 +1,4 @@
-<div id="aluno-disciplinas-list"class="panel panel-default">
+<div id="aluno-disciplinas-list" class="panel panel-default">
   <div class="panel-heading">Disciplinas</div>
   <div class="panel-body">
     <p>Lista das disciplinas.</p>

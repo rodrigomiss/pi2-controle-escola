@@ -28,18 +28,18 @@
 
 <?php if ($modo == "listar" || $modo == "acessado-pelo-menu-principal"): ?>
   <div id="professores-cadastrados" style="display:visible">
-   <div id="professores-cadastrados-list"class="panel panel-default">
+   <div id="professores-cadastrados-list" class="panel panel-default">
       <div class="panel-heading">Professores Cadastrados</div>
       <div class="panel-body">
-        <a href="javascript:carregaFormProfessor('cadastrar', -1);"><img src="img/icone-adicionar" title="Novo Cadastro"></a>
-        <a href="javascript:carregaFormProfessor('listar', -1);"><img src="img/icone-procurar" title="Listar/Procurar Cadastro"></a>
+        <a href="javascript:carregaFormProfessor('cadastrar', -1);"><img src="img/icone-adicionar" alt="Novo" title="Novo Cadastro"></a>
+        <a href="javascript:carregaFormProfessor('listar', -1);"><img src="img/icone-procurar" alt="Procurar" title="Listar/Procurar Cadastro"></a>
       </div>
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th width="15%">Código</th>
+            <th class"codigo">Código</th>
             <th>Nome</th>
-            <th width="20%">Opções</th>
+            <th class="opcoes">Opções</th>
           </tr>
         </thead>
 
@@ -50,8 +50,8 @@
           foreach ($professores as $idx_professor => $cadastro) {
             $codigo = $cadastro["codigo"];
             $nome = $cadastro["nome"];
-            $link_editar = "<a href='javascript:carregaFormProfessor(\"editar\", $idx_professor);'><img src='img/icone-editar.png' width='22%'' title='Editar' caption='$ra'></a>";
-            $link_remover = "<a href='javascript:carregaFormProfessor(\"remove\", $idx_professor);'><img src='img/icone-remover.png' width='22%' title='Remover'></a>";
+            $link_editar = "<a href='javascript:carregaFormProfessor(\"editar\", $idx_professor);'><img src='img/icone-editar.png' width='22%'' alt='Editar' title='Editar' caption='$ra'></a>";
+            $link_remover = "<a href='javascript:carregaFormProfessor(\"remove\", $idx_professor);'><img src='img/icone-remover.png' width='22%' alt='Remover' title='Remover'></a>";
             
             echo                    
             "<tr>
@@ -67,11 +67,11 @@
   </div>
 <?php else:?>
   <div id="cadastro-professor" style="display:visible">
-   <div id="cadastro-professor-list"class="panel panel-default">
+   <div id="cadastro-professor-list" class="panel panel-default">
       <div class="panel-heading">Cadastrado de Professores</div>
       <div class="panel-body">
-        <a href="javascript:carregaFormProfessor('cadastrar', -1);"><img src="img/icone-adicionar" title="Novo Cadastro"></a>
-        <a href="javascript:carregaFormProfessor('listar', -1);"><img src="img/icone-procurar" title="Listar/Procurar Cadastro"></a>
+        <a href="javascript:carregaFormProfessor('cadastrar', -1);"><img src="img/icone-adicionar" alt="Novo" title="Novo Cadastro"></a>
+        <a href="javascript:carregaFormProfessor('listar', -1);"><img src="img/icone-procurar" alt="Procurar" title="Listar/Procurar Cadastro"></a>
       </div>
       <form name="cadastro-professor-form" id="cadastro-professor-form" method="post">
         <input type="hidden" id="indice" value="<?= $idx_professor; ?>">

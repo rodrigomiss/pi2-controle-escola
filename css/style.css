@@ -135,3 +135,11 @@ h2 {
 #aluno-matricula-list button{
     margin-top: 10px;
 }
+
+#professores-cadastrados table th.codigo, #alunos-cadastrados table th.codigo, #disciplinas-cadastradas table th.codigo{
+    width: 15%;
+}
+
+#professores-cadastrados table th.opcoes, #alunos-cadastrados table th.opcoes, #disciplinas-cadastradas table th.opcoes{
+    width: 20%;
+}
