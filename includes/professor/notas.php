@@ -63,6 +63,7 @@
         <th colspan="2">Trabalho</th>
         <th colspan="2">Prova1</th>
         <th colspan="2">Prova2</th>
+        <th>Média Final</th>
       </tr>
     </thead>
     <?php      
@@ -102,6 +103,8 @@
                 onClick=\"javascript:mostra_campo_alterar_nota('prova2$idx_aluno', '$idx_aluno', '$idx_disciplina');\">
                 <span class=\"glyphicon glyphicon-edit\"></span>
               </button>
+            </td>
+            <td>0.00
             </td>
           </tr>";  
         }
