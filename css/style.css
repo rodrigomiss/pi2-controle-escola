@@ -30,7 +30,7 @@ h2 {
     padding-bottom: 25px;
 }
 
-#aluno-disciplinas-list, #professor-notas-list{
+#aluno-disciplinas-list, #professor-notas-list, #aluno-matricula-list{
     width: 500px;
     margin-left: 200px;
 }

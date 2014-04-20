@@ -17,7 +17,6 @@
 <h4>Página de matrícula</h4>
 <br/>
 
-<div id="aluno-disciplinas-list"class="panel panel-default">
 <div id="aluno-matricula-list" class="panel panel-default">
   <div class="panel-heading">Disciplinas</div>
   <div class="panel-body">
