@@ -31,8 +31,12 @@
    <div id="alunos-cadastrados-list" class="panel panel-default">
       <div class="panel-heading">Alunos Cadastrados</div>
       <div class="panel-body">
-        <a href="javascript:carregaFormAluno('cadastrar', -1);"><img src="img/icone-adicionar" alt="Novo" title="Novo Cadastro"></a>
-        <a href="javascript:carregaFormAluno('listar', -1);"><img src="img/icone-procurar" alt="Procurar" title="Listar/Procurar Cadastro"></a>
+        <button type="button" onClick="javascript:carregaFormAluno('cadastrar', -1);" class="btn btn-default btn-xs btn-novo-cadastro">
+          <span class="glyphicon glyphicon glyphicon-plus"></span>
+        </button>
+        <button type="button" onClick="javascript:carregaFormAluno('listar', -1);" class="btn btn-default btn-xs btn-procurar-cadastro">
+          <span class="glyphicon glyphicon glyphicon-search"></span>
+        </button>
       </div>
       <table class="table table-bordered">
         <thead>
@@ -52,8 +56,8 @@
             $nome = $aluno["nome"];
             //$link_editar = "<a href='?modo=editar-aluno&id=$indice&div=admin-alunos'><img src='img/icone-editar.png' width='22%'' title='Editar'></a>";
             //$link_remover = "<a href='?modo=remover-aluno&id=$indice'><img src='img/icone-remover.png' width='22%' title='Remover'></a>";
-            $link_editar = "<a href='javascript:carregaFormAluno(\"editar\", $idx_aluno);'><img src='img/icone-editar.png' width='22%'' alt='Editar' title='Editar' caption='$ra'></a>";
-            $link_remover = "<a href='javascript:carregaFormAluno(\"remove\", $idx_aluno);'><img src='img/icone-remover.png' width='22%' alt='Remover' title='Remover'></a>";
+            $link_editar = "<button type='button' onClick='javascript:carregaFormAluno(\"editar\", $idx_aluno);' class='btn btn-default btn-xs btn-editar'><span class='glyphicon glyphicon glyphicon-edit'></span></button>";
+            $link_remover = "<button type='button' onClick='javascript:carregaFormAluno(\"remove\", $idx_aluno);' class='btn btn-default btn-xs btn-remover'><span class='glyphicon glyphicon glyphicon-remove'></span></button>";
             
             echo                    
             "<tr>
@@ -72,8 +76,12 @@
    <div id="cadastro-aluno-list" class="panel panel-default">
     <div class="panel-heading">Cadastrado de Alunos</div>
     <div class="panel-body">
-      <a href="javascript:carregaFormAluno('cadastrar', -1);"><img src="img/icone-adicionar" alt="Novo" title="Novo Cadastro"></a>
-      <a href="javascript:carregaFormAluno('listar', -1);"><img src="img/icone-procurar" alt="Procurar" title="Listar/Procurar Cadastro"></a>
+      <button type="button" onClick="javascript:carregaFormAluno('cadastrar', -1);" class="btn btn-default btn-xs btn-novo-cadastro">
+          <span class="glyphicon glyphicon glyphicon-plus"></span>
+      </button>
+      <button type="button" onClick="javascript:carregaFormAluno('listar', -1);" class="btn btn-default btn-xs btn-procurar-cadastro">
+          <span class="glyphicon glyphicon glyphicon-search"></span>
+      </button>
     </div>
     <input type="hidden" id="id" value="<?= $idx_aluno; ?>">
   

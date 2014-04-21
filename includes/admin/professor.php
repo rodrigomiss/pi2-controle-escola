@@ -31,8 +31,12 @@
    <div id="professores-cadastrados-list" class="panel panel-default">
       <div class="panel-heading">Professores Cadastrados</div>
       <div class="panel-body">
-        <a href="javascript:carregaFormProfessor('cadastrar', -1);"><img src="img/icone-adicionar" alt="Novo" title="Novo Cadastro"></a>
-        <a href="javascript:carregaFormProfessor('listar', -1);"><img src="img/icone-procurar" alt="Procurar" title="Listar/Procurar Cadastro"></a>
+        <button type="button" onClick="javascript:carregaFormProfessor('cadastrar', -1);" class="btn btn-default btn-xs btn-novo-cadastro">
+          <span class="glyphicon glyphicon glyphicon-plus"></span>
+        </button>
+        <button type="button" onClick="javascript:carregaFormProfessor('listar', -1);" class="btn btn-default btn-xs btn-procurar-cadastro">
+          <span class="glyphicon glyphicon glyphicon-search"></span>
+        </button>
       </div>
       <table class="table table-bordered">
         <thead>
@@ -50,9 +54,8 @@
           foreach ($professores as $idx_professor => $cadastro) {
             $codigo = $cadastro["codigo"];
             $nome = $cadastro["nome"];
-            $link_editar = "<a href='javascript:carregaFormProfessor(\"editar\", $idx_professor);'><img src='img/icone-editar.png' width='22%'' alt='Editar' title='Editar' caption='$ra'></a>";
-            $link_remover = "<a href='javascript:carregaFormProfessor(\"remove\", $idx_professor);'><img src='img/icone-remover.png' width='22%' alt='Remover' title='Remover'></a>";
-            
+            $link_editar = "<button type='button' onClick='javascript:carregaFormProfessor(\"editar\", $idx_professor);' class='btn btn-default btn-xs btn-editar'><span class='glyphicon glyphicon glyphicon-edit'></span></button>";
+            $link_remover = "<button type='button' onClick='javascript:carregaFormProfessor(\"remove\", $idx_professor);' class='btn btn-default btn-xs btn-remover'><span class='glyphicon glyphicon glyphicon-remove'></span></button>";            
             echo                    
             "<tr>
               <td>$codigo</td>
@@ -70,8 +73,12 @@
    <div id="cadastro-professor-list" class="panel panel-default">
       <div class="panel-heading">Cadastrado de Professores</div>
       <div class="panel-body">
-        <a href="javascript:carregaFormProfessor('cadastrar', -1);"><img src="img/icone-adicionar" alt="Novo" title="Novo Cadastro"></a>
-        <a href="javascript:carregaFormProfessor('listar', -1);"><img src="img/icone-procurar" alt="Procurar" title="Listar/Procurar Cadastro"></a>
+        <button type="button" onClick="javascript:carregaFormProfessor('cadastrar', -1);" class="btn btn-default btn-xs btn-novo-cadastro">
+          <span class="glyphicon glyphicon glyphicon-plus"></span>
+        </button>
+        <button type="button" onClick="javascript:carregaFormProfessor('listar', -1);" class="btn btn-default btn-xs btn-procurar-cadastro">
+          <span class="glyphicon glyphicon glyphicon-search"></span>
+        </button>
       </div>
       <form name="cadastro-professor-form" id="cadastro-professor-form" method="post">
         <input type="hidden" id="indice" value="<?= $idx_professor; ?>">
