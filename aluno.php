@@ -6,13 +6,10 @@
     header("Location: index.html?modo=login-aluno-expirado");
     exit;
   }else{
+    $modo = isset($_POST["modo"]) ? $_POST["modo"] : $_GET['modo'];
     $idx_login_aluno = $_SESSION[NOME_SESSAO_LOGIN_ALUNOS];
     $nome_login_aluno = $_SESSION[NOME_SESSAO_ALUNOS][$idx_login_aluno]['nome'];
   }
-
-  $modo = isset($_POST["modo"]) ? $_POST["modo"] : $_GET['modo'];
-  // echo "<pre>";
-  // var_dump($nome_login_aluno); exit;
 ?>
 
 <!DOCTYPE html>
@@ -62,13 +59,7 @@
           <?php require_once "includes/aluno/matricula.php"; ?>
         </div>
         <div id="aluno-notas" style="display:none">
-          <h3>Notas</h3>
-          <select id="aluno-disciplinas-select" class="form-control">
-            <option selected disabled>Selecione a disciplina</option>
-            <option value="00001">Disciplina 1</option>
-            <option value="00005">Disciplina 5</option>
-            <option value="00007">Disciplina 7</option>
-          </select>
+          <?php require_once "includes/aluno/notas.php"; ?>
         </div>
       </div>
     </div>

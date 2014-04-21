@@ -471,3 +471,13 @@ function fazerMatricula(idxAluno, idxDisciplina){
 		}	
 	);	
 }
+
+function alterar_disciplina_aluno(){
+	$.post(
+		"includes/aluno/notas.php", 
+		{modo: "alterar_disciplina", disciplina: $("#aluno-disciplinas-select").val()},
+		function(retorno){
+			$("#aluno-notas").html(retorno);
+		}	
+	);	
+}

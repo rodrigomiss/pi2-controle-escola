@@ -65,9 +65,9 @@
       <tr>
         <th>R.A.</th>
         <th>Nome</th>
-        <th colspan="2">Trabalho</th>
-        <th colspan="2">Prova1</th>
-        <th colspan="2">Prova2</th>
+        <th colspan="2">Trabalho <?= "(P. ".PESO_TRABALHO.")"?></th>
+        <th colspan="2">Prova1 <?= "(P. ".PESO_PROVA1.")"?></th>
+        <th colspan="2">Prova2 <?= "(P. ".PESO_PROVA2.")"?></th>
         <th>Média Final</th>
       </tr>
     </thead>

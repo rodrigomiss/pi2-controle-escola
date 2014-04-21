@@ -8,6 +8,9 @@ define("NOME_SESSAO_PROFESSORES", "professores");
 define("NOME_SESSAO_DISCIPLINAS", "disciplinas");
 define("NOME_SESSAO_MATRICULAS", "matricula");
 define("NOME_SESSAO_NOTAS", "notas");
+define("PESO_TRABALHO", 1);
+define("PESO_PROVA1", 2);
+define("PESO_PROVA2", 3);
 
 function postData($data, $session_name, $index_edit = -1){
 	$record = array();
@@ -84,10 +87,6 @@ function listRegistrationByStudent($index_student, $registrations = null){
 }
 
 function calcAverage($trabalho, $prova1, $prova2){
-	$pesoTrabalho = 1;
-	$pesoProva1 = 2;
-	$presoProva2 = 3;
-
-	return ($trabalho*$pesoTrabalho + $prova1*$pesoProva1 + $prova2*$presoProva2) / ($pesoTrabalho+$pesoProva1+$presoProva2);
+	return ($trabalho*PESO_TRABALHO+$prova1*PESO_PROVA1+$prova2*PESO_PROVA2) / (PESO_TRABALHO+PESO_PROVA1+PESO_PROVA2);
 }
 ?>

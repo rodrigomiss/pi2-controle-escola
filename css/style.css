@@ -35,7 +35,7 @@ h2 {
     margin-left: 200px;
 }
 
-#professor-notas-list{
+#professor-notas-list, #aluno-notas-list{
     width: 600px;
     margin-left: 150px;    
 }
