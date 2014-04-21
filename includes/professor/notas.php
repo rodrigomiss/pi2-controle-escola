@@ -21,23 +21,29 @@
       "prova2" => $prova2
     );
 
-    $notas = array();
-    $notas = listData(NOME_SESSAO_NOTAS);
-    
+    $notas = listData(NOME_SESSAO_NOTAS);    
     //se estiver alterando a nota
     foreach ($notas as $indice => $nota) {
       if ($nota["aluno"] == $idx_aluno && $nota["disciplina"] == $idx_disciplina){
         postData($nova_nota, NOME_SESSAO_NOTAS, $indice);  
         $alterou_nota = true;
+        addMsgFlash("<strong>Sucesso!</strong><br>Nota alterada com sucesso!", "sucess");
         break;
       }
     }
 
     //se estiver cadastrando uma nova nota
-    if (!$alterou_nota) postData($nova_nota, NOME_SESSAO_NOTAS);  
+    if (!$alterou_nota){
+      postData($nova_nota, NOME_SESSAO_NOTAS);  
+      addMsgFlash("<strong>Sucesso!</strong><br>Nota cadastrada com sucesso!", "sucess");
+    }
+  }
+
+  $msg = listMsgFlash();  
+  foreach ($msg as $mensagem) {
+    echo "<div class='alert flash $mensagem[type]'>$mensagem[msg]</div>";
   }
 ?>
-
 <h3>Notas</h3>
 <select id="professor-disciplinas-select" onchange="javascript:alterar_disciplina();"  class="form-control">
   <option selected disabled>Selecione a disciplina</option>

@@ -19,10 +19,17 @@
     );  
 
     postData($disciplinas, NOME_SESSAO_DISCIPLINAS, $idx_disciplina);    
+    addMsgFlash("<strong>Sucesso</strong><br>O cadastro da disciplina foi ".($idx_disciplina>-1 ? "alterada" : "realizada")." com sucesso!", "sucess");
     $modo = "listar";
   }elseif ($modo == "remove"){
     removeData(NOME_SESSAO_DISCIPLINAS, $idx_disciplina);
+    addMsgFlash("<strong>Sucesso</strong><br>O cadastro da disciplina foi removido com sucesso!", "sucess");
     $modo = "listar";
+  }
+
+  $msg = listMsgFlash();  
+  foreach ($msg as $mensagem) {
+    echo "<div class='alert flash $mensagem[type]'>$mensagem[msg]</div>";
   }
 ?>
 
@@ -113,7 +120,7 @@
         </select>
       </div>
       <div class="alert alert-danger danger-professor" style="display:none">Preencha o campo Professor</div>      
-      <button type="button" onclick="javascript:salvarCadastroDisciplina();" class="btn btn-default btn-salvar">
+      <button type="button" onclick="javascript:validaCadastro('disciplina');" class="btn btn-default btn-salvar">
         <span class="glyphicon glyphicon-floppy-disk"></span> Salvar
       </button>
       <button type="button" onClick="javascript:carregaFormDisciplina('listar', -1);" class="btn btn-default btn-cancelar">

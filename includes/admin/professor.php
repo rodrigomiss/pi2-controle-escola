@@ -6,7 +6,6 @@
   require_once ($modo == "acessado-pelo-menu-principal") ? "includes/funcoes.php" : "../funcoes.php";
 
   if ($modo == "editar"){
-    $professores = array();
     $professores = listData(NOME_SESSAO_PROFESSORES, $idx_professor);    
     $codigo = $professores["codigo"];
     $nome = $professores["nome"];
@@ -18,11 +17,28 @@
       "senha" => $_POST["senha"]
     );  
 
-    postData($professores, NOME_SESSAO_PROFESSORES, $idx_professor);    
-    $modo = "listar";
+    $idx_professor_cadastrado = teacherExists($_POST["codigo"]);
+    if ($idx_professor_cadastrado > -1 && $idx_professor_cadastrado != $idx_professor){
+      addMsgFlash("<strong>ERRO</strong><br>Já existe outro professor cadastrado com este código!", "error");
+      $modo = "editar"; //carrega dados novamente para editar corretamente
+      $professores = listData(NOME_SESSAO_PROFESSORES, $idx_professor);    
+      $codigo = $professores["codigo"];
+      $nome = $professores["nome"];
+      $senha = $professores["senha"];
+    }else{
+      postData($professores, NOME_SESSAO_PROFESSORES, $idx_professor);  
+      addMsgFlash("<strong>Sucesso</strong><br>O cadastro do professor foi ".($idx_professor>-1 ? "alterado" : "realizado")." com sucesso!", "sucess");
+      $modo = "listar"; //muda modo para lista após salvar
+    }
   }elseif ($modo == "remove"){
     removeData(NOME_SESSAO_PROFESSORES, $idx_professor);
+    addMsgFlash("<strong>Removido!</strong><br>O cadastro do professor foi removido com sucesso!", "sucess");
     $modo = "listar";
+  }
+
+  $msg = listMsgFlash();  
+  foreach ($msg as $mensagem) {
+    echo "<div class='alert flash $mensagem[type]'>$mensagem[msg]</div>";
   }
 ?>
 
@@ -98,7 +114,7 @@
           <input id="senha" type="password" class="form-control" placeholder="Senha" value="<?= $senha; ?>">
         </div>
         <div class="alert alert-danger danger-senha" style="display:none;">Preencha o campo Senha</div>
-        <button type="button" onclick="javascript:salvarCadastroProfessor();" class="btn btn-default btn-salvar">
+        <button type="button" onclick="javascript:validaCadastro('professor');" class="btn btn-default btn-salvar">
           <span class="glyphicon glyphicon-floppy-disk"></span> Salvar
         </button>
       <button type="button" onClick="javascript:carregaFormProfessor('listar', -1);" class="btn btn-default btn-cancelar">

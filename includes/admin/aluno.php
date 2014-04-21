@@ -6,7 +6,6 @@
   require_once ($modo == "acessado-pelo-menu-principal") ? "includes/funcoes.php" : "../funcoes.php";
 
   if ($modo == "editar"){
-    $alunos = array();
     $alunos = listData(NOME_SESSAO_ALUNOS, $idx_aluno);    
     $ra = $alunos["ra"];
     $nome = $alunos["nome"];
@@ -18,11 +17,29 @@
       "senha" => $_POST["senha"]
     );  
 
-    postData($alunos, NOME_SESSAO_ALUNOS, $idx_aluno);    
-    $modo = "listar";
+    $idx_aluno_cadastrado = studentExists($_POST["ra"]); 
+    if ($idx_aluno_cadastrado > -1 && $idx_aluno_cadastrado != $idx_aluno){
+      addMsgFlash("<strong>ERRO</strong><br>Já existe outro aluno cadastrado com este R.A", "error");
+
+      $modo = "editar"; //carrega dos novamente para editar corretamente
+      $alunos = listData(NOME_SESSAO_ALUNOS, $idx_aluno);    
+      $ra = $alunos["ra"];
+      $nome = $alunos["nome"];
+      $senha = $alunos["senha"];
+    }else{
+      postData($alunos, NOME_SESSAO_ALUNOS, $idx_aluno);    
+      addMsgFlash("<strong>Sucesso</strong><br>O cadastro do aluno foi ".($idx_aluno>-1 ? "alterado" : "realizado")." com sucesso!", "sucess");
+      $modo = "listar";
+    }
   }elseif ($modo == "remove"){
     removeData(NOME_SESSAO_ALUNOS, $idx_aluno);
+    addMsgFlash("<strong>Removido!</strong><br>O cadastro do aluno foi removido com sucesso", "sucess");     
     $modo = "listar";
+  }
+
+  $msg = listMsgFlash();  
+  foreach ($msg as $mensagem) {
+    echo "<div class='alert flash $mensagem[type]'>$mensagem[msg]</div>";
   }
 ?>
 
@@ -54,8 +71,6 @@
           foreach ($alunos as $idx_aluno => $aluno) {
             $ra = $aluno["ra"];
             $nome = $aluno["nome"];
-            //$link_editar = "<a href='?modo=editar-aluno&id=$indice&div=admin-alunos'><img src='img/icone-editar.png' width='22%'' title='Editar'></a>";
-            //$link_remover = "<a href='?modo=remover-aluno&id=$indice'><img src='img/icone-remover.png' width='22%' title='Remover'></a>";
             $link_editar = "<button type='button' onClick='javascript:carregaFormAluno(\"editar\", $idx_aluno);' class='btn btn-default btn-xs btn-editar'><span class='glyphicon glyphicon glyphicon-edit'></span></button>";
             $link_remover = "<button type='button' onClick='javascript:carregaFormAluno(\"remove\", $idx_aluno);' class='btn btn-default btn-xs btn-remover'><span class='glyphicon glyphicon glyphicon-remove'></span></button>";
             
@@ -100,7 +115,7 @@
       <input id="senha" type="password" class="form-control" placeholder="Senha" value="<?= $senha; ?>">
     </div>
     <div class="alert alert-danger danger-senha" style="display:none;">Preencha o campo Senha</div>
-    <button type="button" onClick="javascript:salvarCadastroAluno();" class="btn btn-default btn-salvar">
+    <button type="button" onClick="javascript:validaCadastro('aluno');" class="btn btn-default btn-salvar">
       <span class="glyphicon glyphicon-floppy-disk"></span> Salvar
     </button>
     <button type="button" onClick="javascript:carregaFormAluno('listar', -1);" class="btn btn-default btn-cancelar">

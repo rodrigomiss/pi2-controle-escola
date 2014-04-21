@@ -1,5 +1,6 @@
 <?php
 session_start();
+define("NOME_SESSAO_MSG_FLASH", "msgFlash");
 define("NOME_SESSAO_LOGIN_ADMINISTRADORES", "login_admin");
 define("NOME_SESSAO_LOGIN_ALUNOS", "login_aluno");
 define("NOME_SESSAO_LOGIN_PROFESSORES", "login_professor");
@@ -36,6 +37,28 @@ function removeData($session_name, $index_remove = -1){
 
 function listData($session_name, $index_list = -1){
 	return ($index_list > -1) ? $_SESSION[$session_name][$index_list] : $_SESSION[$session_name];
+}
+
+function studentExists($ra){
+	$alunos = $_SESSION[NOME_SESSAO_ALUNOS];
+
+	foreach ($alunos as $idx_aluno => $aluno) {
+		if ($aluno["ra"] == $ra)
+			return $idx_aluno;
+	}
+
+	return -1;
+}
+
+function teacherExists($codigo){
+	$professores = $_SESSION[NOME_SESSAO_PROFESSORES];
+
+	foreach ($professores as $idx_professor => $professor) {
+		if ($professor["codigo"] == $codigo)
+			return $idx_professor;
+	}
+
+	return -1;
 }
 
 function listNotesByDisciplines($index_discipline, $array_notes = null){
@@ -88,5 +111,16 @@ function listRegistrationByStudent($index_student, $registrations = null){
 
 function calcAverage($trabalho, $prova1, $prova2){
 	return ($trabalho*PESO_TRABALHO+$prova1*PESO_PROVA1+$prova2*PESO_PROVA2) / (PESO_TRABALHO+PESO_PROVA1+PESO_PROVA2);
+}
+
+function addMsgFlash($msg, $type){
+	$types = array("error"=>"alert-danger", "sucess"=>"alert-success");
+	$_SESSION[NOME_SESSAO_MSG_FLASH][] = array("type" => $types[$type], "msg" => $msg);
+}
+
+function listMsgFlash(){
+	$return = $_SESSION[NOME_SESSAO_MSG_FLASH];
+	unset($_SESSION[NOME_SESSAO_MSG_FLASH]);
+	return $return;
 }
 ?>

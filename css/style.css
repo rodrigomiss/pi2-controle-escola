@@ -139,3 +139,8 @@ h2 {
 #professores-cadastrados table th.opcoes, #alunos-cadastrados table th.opcoes, #disciplinas-cadastradas table th.opcoes{
     width: 20%;
 }
+
+.alert.flash{
+    width: 500px;
+    margin: 10px auto 20px;
+}
