@@ -79,7 +79,7 @@
           </div>
         </div>
         <div id="admin-notas" style="display:none">
-          <h3>Notas</h3>
+          <?php require_once "includes/admin/notas.php"; ?>
         </div>
       </div>
     </div>

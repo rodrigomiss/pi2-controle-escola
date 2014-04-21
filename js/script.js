@@ -416,6 +416,15 @@ function salvarCadastroDisciplina(){
 	);
 }
 
+function alterar_disciplina_admin(){
+	$.post(
+		"includes/admin/notas.php", 
+		{modo: "alterar_disciplina", disciplina: $("#admin-disciplinas-select").val()},
+		function(retorno){
+			$("#admin-notas").html(retorno);
+		}	
+	);	
+}
 
 /*cadastro de notas area do professor*/
 function alterar_disciplina(){
@@ -468,6 +477,16 @@ function fazerMatricula(idxAluno, idxDisciplina){
 					$("#aluno-disciplinas").html(retorno2);
 				}
 			);
+		}	
+	);	
+}
+
+function alterar_disciplina_aluno(){
+	$.post(
+		"includes/aluno/notas.php", 
+		{modo: "alterar_disciplina", disciplina: $("#aluno-disciplinas-select").val()},
+		function(retorno){
+			$("#aluno-notas").html(retorno);
 		}	
 	);	
 }
