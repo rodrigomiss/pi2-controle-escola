@@ -8,6 +8,7 @@
   }
   
   $modo = isset($_POST["modo"]) ? $_POST["modo"] : $_GET['modo'];
+  $nome_login_professor = $_SESSION[NOME_SESSAO_PROFESSORES][$_SESSION[NOME_SESSAO_LOGIN_PROFESSORES]]["nome"];
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +40,7 @@
               <ul class="nav navbar-nav">
                 <li><a id="btn-professor-disciplinas" href="#">Disciplinas</a></li>
                 <li><a id="btn-professor-notas" href="#">Notas</a></li>
-                <li><p class="navbar-text navbar-show-user">Logado como <strong><?= $_SESSION["login_professor"] ?></strong></p></li>
+                <li><p class="navbar-text navbar-show-user">Logado como <strong><?= $nome_login_professor; ?></strong></p></li>
                 <li><a id="btn-professor-sair" href="#"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
               </ul>
             </div>

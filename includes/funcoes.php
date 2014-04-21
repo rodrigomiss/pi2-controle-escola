@@ -82,4 +82,12 @@ function listRegistrationByStudent($index_student, $registrations = null){
 
 	return $return;		
 }
+
+function calcAverage($trabalho, $prova1, $prova2){
+	$pesoTrabalho = 1;
+	$pesoProva1 = 2;
+	$presoProva2 = 3;
+
+	return ($trabalho*$pesoTrabalho + $prova1*$pesoProva1 + $prova2*$presoProva2) / ($pesoTrabalho+$pesoProva1+$presoProva2);
+}
 ?>

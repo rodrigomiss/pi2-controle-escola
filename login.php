@@ -29,7 +29,7 @@
 			if ($professor["nome"] == $usuario){
 				if ($professor["senha"] == $senha){
 					echo "OK";
-					$_SESSION[NOME_SESSAO_LOGIN_PROFESSORES] = $usuario;
+					$_SESSION[NOME_SESSAO_LOGIN_PROFESSORES] = $indice;
 					exit;
 				}else{
 					echo "ERROSENHA";
