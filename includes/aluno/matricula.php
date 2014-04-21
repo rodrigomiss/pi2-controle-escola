@@ -34,6 +34,7 @@
     <?php
       $idx_login_aluno = $_SESSION[NOME_SESSAO_LOGIN_ALUNOS];
       $disciplinas = listData(NOME_SESSAO_DISCIPLINAS);
+      $professores = listData(NOME_SESSAO_PROFESSORES);
       $matriculas = listData(NOME_SESSAO_MATRICULAS);
       $matriculas = listRegistrationByStudent($idx_login_aluno, $matriculas); //array com todas as disciplinas que o aluno esta matriculado
       
@@ -45,7 +46,7 @@
           "<tr>
               <td>$disciplina[codigo]</td>
               <td align=left>$disciplina[disciplina]</td>
-              <td align=left>$disciplina[professor]</td>
+              <td align=left>".$professores[$disciplina["professor"]]["nome"]."</td>
               <td>
                 <button class='btn btn-default btn-matricular' 
                   onClick=\"javascript:fazerMatricula('$idx_login_aluno', '$idx_disciplina');\" title='Fazer matrícula'> 

@@ -47,11 +47,11 @@
 		$alunos = array();
 		$alunos = listData(NOME_SESSAO_ALUNOS);	
 
-		foreach ($alunos as $aluno) {
+		foreach ($alunos as $idx_aluno => $aluno) {
 			if ($aluno["ra"] == $ra){
 				if ($aluno["senha"] == $senha){
 					echo "OK";
-					$_SESSION[NOME_SESSAO_LOGIN_ALUNOS] = $ra;
+					$_SESSION[NOME_SESSAO_LOGIN_ALUNOS] = $idx_aluno;
 					exit;
 				}else{
 					echo "ERROSENHA";
