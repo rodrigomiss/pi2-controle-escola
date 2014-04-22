@@ -3,7 +3,8 @@
   require_once "includes/funcoes.php";
 
   if (!isset($_SESSION[NOME_SESSAO_LOGIN_PROFESSORES])){
-    header("Location: index.html?modo=login-professor-expirado");
+    addMsgFlash("<strong>Erro</strong><br>Sua sessão de professor expirou!", "error");
+    header("Location: index.php");
     exit;
   }
   

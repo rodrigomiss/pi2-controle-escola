@@ -11,6 +11,12 @@
     );  
 
     postData($matricula, NOME_SESSAO_MATRICULAS);
+    addMsgFlash("<strong>Sucesso</strong><br>Sua matrícula foi realizada com sucesso!", "sucess");
+  }
+
+  $msg = listMsgFlash();  
+  foreach ($msg as $mensagem) {
+    echo "<div class='alert flash $mensagem[type]'>$mensagem[msg]</div>";
   }
 ?>
 

@@ -3,7 +3,8 @@
   require_once "includes/funcoes.php";
 
   if (!isset($_SESSION[NOME_SESSAO_LOGIN_ALUNOS])){
-    header("Location: index.html?modo=login-aluno-expirado");
+    addMsgFlash("<strong>Erro</strong><br>Sua sessão de aluno expirou!", "error");
+    header("Location: index.php");
     exit;
   }else{
     $modo = isset($_POST["modo"]) ? $_POST["modo"] : $_GET['modo'];

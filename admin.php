@@ -3,7 +3,8 @@
   require_once "includes/funcoes.php";
 
   if (!isset($_SESSION[NOME_SESSAO_LOGIN_ADMINISTRADORES])){
-    header("Location: index.html?modo=login-admin-expirado");
+    addMsgFlash("<strong>Erro</strong><br>Sua sessão de administrador expirou!", "error");
+    header("Location: index.php");
     exit;
   }
   $modo = isset($_POST["modo"]) ? $_POST["modo"] : $_GET['modo'];

@@ -35,10 +35,9 @@
     }
     if ($erro){
       $modo = "editar"; //carrega dados novamente para editar corretamente
-      $professores = listData(NOME_SESSAO_PROFESSORES, $idx_professor);    
-      $codigo = $professores["codigo"];
-      $nome = $professores["nome"];
-      $senha = $professores["senha"];
+      $codigo = $_POST["codigo"];
+      $nome = $_POST["nome"];
+      $senha = $_POST["senha"];
     }else{
       postData($professores, NOME_SESSAO_PROFESSORES, $idx_professor);  
       addMsgFlash("<strong>Sucesso</strong><br>O cadastro do professor foi ".($idx_professor>-1 ? "<strong>alterado</strong>" : "realizado")." com sucesso!", "sucess");

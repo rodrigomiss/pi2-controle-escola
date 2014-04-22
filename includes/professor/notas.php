@@ -13,6 +13,7 @@
     $prova1 = (float) $_POST["prova1"]; 
     $prova2 = (float) $_POST["prova2"]; 
     $alterou_nota = false;       
+    $erro = false;
     $nova_nota = array(
       "aluno" => $idx_aluno,
       "disciplina" => $idx_disciplina,
@@ -21,21 +22,36 @@
       "prova2" => $prova2
     );
 
-    $notas = listData(NOME_SESSAO_NOTAS);    
-    //se estiver alterando a nota
-    foreach ($notas as $indice => $nota) {
-      if ($nota["aluno"] == $idx_aluno && $nota["disciplina"] == $idx_disciplina){
-        postData($nova_nota, NOME_SESSAO_NOTAS, $indice);  
-        $alterou_nota = true;
-        addMsgFlash("<strong>Sucesso!</strong><br>Nota alterada com sucesso!", "sucess");
-        break;
-      }
+    if (!is_finite($_POST["trabalho"])){
+      addMsgFlash("<strong>Erro</strong><br>Alterações não realizadas porque a nota do <strong>trabalho</strong> não é uma nota válida!", "error");
+      $erro = true;      
+    }
+    if (!is_finite($_POST["prova1"])){
+      addMsgFlash("<strong>Erro</strong><br>Alterações não realizadas porque a nota da <strong>Prova 1</strong> não é uma nota válida!", "error");
+      $erro = true;  
+    }
+    if (!is_finite($_POST["prova2"])){
+      addMsgFlash("<strong>Erro</strong><br>Alterações não realizadas porque a nota da <strong>Prova 2</strong> não é uma nota válida!", "error");
+      $erro = true;  
     }
 
-    //se estiver cadastrando uma nova nota
-    if (!$alterou_nota){
-      postData($nova_nota, NOME_SESSAO_NOTAS);  
-      addMsgFlash("<strong>Sucesso!</strong><br>Nota cadastrada com sucesso!", "sucess");
+    if (!$erro){
+      $notas = listData(NOME_SESSAO_NOTAS);    
+      //se estiver alterando a nota
+      foreach ($notas as $indice => $nota) {
+        if ($nota["aluno"] == $idx_aluno && $nota["disciplina"] == $idx_disciplina){
+          postData($nova_nota, NOME_SESSAO_NOTAS, $indice);  
+          $alterou_nota = true;
+          addMsgFlash("<strong>Sucesso!</strong><br>Nota alterada com sucesso!", "sucess");
+          break;
+        }
+      }
+
+      //se estiver cadastrando uma nova nota
+      if (!$alterou_nota){
+        postData($nova_nota, NOME_SESSAO_NOTAS);  
+        addMsgFlash("<strong>Sucesso!</strong><br>Nota cadastrada com sucesso!", "sucess");
+      }
     }
   }
 

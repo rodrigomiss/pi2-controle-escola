@@ -6,7 +6,6 @@
   require_once ($modo == "acessado-pelo-menu-principal") ? "includes/funcoes.php" : "../funcoes.php";
 
   if ($modo == "editar"){
-    $disciplinas = array();
     $disciplinas = listData(NOME_SESSAO_DISCIPLINAS, $idx_disciplina);    
     $codigo = $disciplinas["codigo"];
     $nome_disciplina = $disciplinas["disciplina"];
@@ -33,10 +32,9 @@
     }
     if ($erro){
       $modo = "editar"; //carrega dos novamente para editar corretamente
-      $disciplinas = listData(NOME_SESSAO_ALUNOS, $idx_disciplina);    
-      $codigo = $disciplinas["codigo"];
-      $disciplina = $disciplinas["disciplina"];
-      $professor = $alunos["professor"];
+      $codigo = $_POST["codigo"];
+    	$nome_disciplina = $_POST["disciplina"];
+    	$professor_disciplina = $_POST["professor"];
     }else{
       postData($disciplinas, NOME_SESSAO_DISCIPLINAS, $idx_disciplina);    
       addMsgFlash("<strong>Sucesso</strong><br>O cadastro da disciplina foi ".($idx_disciplina>-1 ? "<strong>alterado</strong>" : "realizado")." com sucesso!", "sucess");
@@ -77,13 +75,13 @@
         </thead>
 
         <?php 
-          $disciplinas = array();
           $disciplinas = listData(NOME_SESSAO_DISCIPLINAS);
+          $professores = listData(NOME_SESSAO_PROFESSORES);
 
           foreach ($disciplinas as $idx_disciplina => $disciplina){
             $codigo = $disciplina["codigo"];
             $nome_disciplina = $disciplina["disciplina"];
-            $professor_disciplina = $disciplina["professor"];
+            $professor_disciplina = $professores[$disciplina["professor"]]["nome"];
             $link_editar = "<button type='button' onClick='javascript:carregaFormDisciplina(\"editar\", $idx_disciplina);' class='btn btn-default btn-xs btn-editar'><span class='glyphicon glyphicon glyphicon-edit'></span></button>";
             $link_remover = "<button type='button' onClick='javascript:carregaFormDisciplina(\"remove\", $idx_disciplina);' class='btn btn-default btn-xs btn-remover'><span class='glyphicon glyphicon glyphicon-remove'></span></button>";
 
