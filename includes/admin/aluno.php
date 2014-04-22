@@ -16,11 +16,24 @@
       "nome" => $_POST["nome"],
       "senha" => $_POST["senha"]
     );  
-
-    $idx_aluno_cadastrado = studentExists($_POST["ra"]); 
+    $erro = false;
+    $idx_aluno_cadastrado = studentExists($_POST["ra"]);
+    if($alunos["nome"] == "" || $alunos["ra"] == "" || $alunos["senha"] == ""){
+      addMsgFlash("<strong>ERRO</strong><br>Nenhum campo pode ficar vazio", "error");
+      $erro = true;
+    }
+    if(!preg_match('/^[0-9]*$/', $alunos["ra"])){
+      addMsgFlash("<strong>ERRO</strong><br>O R.A. deve conter apenas números", "error");
+      $erro = true;      
+    }
     if ($idx_aluno_cadastrado > -1 && $idx_aluno_cadastrado != $idx_aluno){
       addMsgFlash("<strong>ERRO</strong><br>Já existe outro aluno cadastrado com este R.A", "error");
-
+      $erro = true;
+    }
+    if (strlen($alunos["senha"]) < 8){
+      addMsgFlash("A senha cadastrada é curta. Recomenda-se utilizar pelo menos 8 caracteres na senha.", "warning");
+    }
+    if ($erro){
       $modo = "editar"; //carrega dos novamente para editar corretamente
       $alunos = listData(NOME_SESSAO_ALUNOS, $idx_aluno);    
       $ra = $alunos["ra"];
@@ -28,12 +41,12 @@
       $senha = $alunos["senha"];
     }else{
       postData($alunos, NOME_SESSAO_ALUNOS, $idx_aluno);    
-      addMsgFlash("<strong>Sucesso</strong><br>O cadastro do aluno foi ".($idx_aluno>-1 ? "alterado" : "realizado")." com sucesso!", "sucess");
+      addMsgFlash("<strong>Sucesso</strong><br>O cadastro do aluno foi ".($idx_aluno>-1 ? "<strong>alterado</strong>" : "realizado")." com sucesso!", "sucess");
       $modo = "listar";
     }
   }elseif ($modo == "remove"){
     removeData(NOME_SESSAO_ALUNOS, $idx_aluno);
-    addMsgFlash("<strong>Removido!</strong><br>O cadastro do aluno foi removido com sucesso", "sucess");     
+    addMsgFlash("<strong>Sucesso</strong><br>O cadastro do aluno foi <strong>removido</strong> com sucesso", "sucess");     
     $modo = "listar";
   }
 
@@ -77,7 +90,7 @@
             echo                    
             "<tr>
               <td>$ra</td>
-              <td align='left'>$nome</td>
+              <td class='align-left'>$nome</td>
               <td>$link_editar $link_remover</td>
             </tr>";     
           }
@@ -89,7 +102,7 @@
 <?php else:?>
   <div id="cadastro-aluno" style="display:visible">
    <div id="cadastro-aluno-list" class="panel panel-default">
-    <div class="panel-heading">Cadastrado de Alunos</div>
+    <div class="panel-heading">Cadastro de Alunos</div>
     <div class="panel-body">
       <button type="button" onClick="javascript:carregaFormAluno('cadastrar', -1);" class="btn btn-default btn-xs btn-novo-cadastro">
           <span class="glyphicon glyphicon glyphicon-plus"></span>
@@ -115,7 +128,7 @@
       <input id="senha" type="password" class="form-control" placeholder="Senha" value="<?= $senha; ?>">
     </div>
     <div class="alert alert-danger danger-senha" style="display:none;">Preencha o campo Senha</div>
-    <button type="button" onClick="javascript:validaCadastro('aluno');" class="btn btn-default btn-salvar">
+    <button type="button" onClick="salvarCadastroAluno();" class="btn btn-default btn-salvar">
       <span class="glyphicon glyphicon-floppy-disk"></span> Salvar
     </button>
     <button type="button" onClick="javascript:carregaFormAluno('listar', -1);" class="btn btn-default btn-cancelar">

@@ -19,7 +19,7 @@
           echo 
           "<tr>
               <td>$disciplina[codigo]</td>
-              <td align=left>$disciplina[disciplina]</td>
+              <td class='align-left'>$disciplina[disciplina]</td>
           </tr>";
         }
       }

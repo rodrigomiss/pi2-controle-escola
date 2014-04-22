@@ -144,3 +144,12 @@ h2 {
     width: 500px;
     margin: 10px auto 20px;
 }
+
+.info-gray{
+    font-size: 10px;
+    color: #777;
+}
+
+.align-left{
+    text-align: left;
+}

@@ -61,6 +61,17 @@ function teacherExists($codigo){
 	return -1;
 }
 
+function subjectExists($codigo){
+	$disciplinas = $_SESSION[NOME_SESSAO_DISCIPLINAS];
+
+	foreach ($disciplinas as $idx_disciplina => $disciplina) {
+		if ($disciplina["codigo"] == $codigo)
+			return $idx_disciplina;
+	}
+
+	return -1;
+}
+
 function listNotesByDisciplines($index_discipline, $array_notes = null){
 	$notes = is_null($array_notes) ? $_SESSION[NOME_SESSAO_NOTAS] : $array_notes;
 	$return = array();
@@ -114,7 +125,7 @@ function calcAverage($trabalho, $prova1, $prova2){
 }
 
 function addMsgFlash($msg, $type){
-	$types = array("error"=>"alert-danger", "sucess"=>"alert-success");
+	$types = array("error"=>"alert-danger", "sucess"=>"alert-success", "warning"=>"alert-warning");
 	$_SESSION[NOME_SESSAO_MSG_FLASH][] = array("type" => $types[$type], "msg" => $msg);
 }
 

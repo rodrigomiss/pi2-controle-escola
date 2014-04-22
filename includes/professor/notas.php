@@ -94,7 +94,7 @@
           echo
           "<tr>
             <td>".$alunos[$idx_aluno]["ra"]."</td>
-            <td align='left'>".$alunos[$idx_aluno]["nome"]."</td>
+            <td class='align-left'>".$alunos[$idx_aluno]["nome"]."</td>
             <td>
               <div id='trabalho$idx_aluno'>".number_format($nota_trabalho, 2)."</div>
             </td>

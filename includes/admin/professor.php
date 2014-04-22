@@ -16,10 +16,24 @@
       "nome" => $_POST["nome"],
       "senha" => $_POST["senha"]
     );  
-
+    $erro = false;
     $idx_professor_cadastrado = teacherExists($_POST["codigo"]);
+    if($professores["codigo"] == "" || $professores["nome"] == "" || $professores["senha"] == ""){
+      addMsgFlash("<strong>ERRO</strong><br>Nenhum campo pode ficar vazio", "error");
+      $erro = true;
+    }
+    if(!preg_match('/^[0-9]*$/', $professores["codigo"])){
+      addMsgFlash("<strong>ERRO</strong><br>O código deve conter apenas números", "error");
+      $erro = true;      
+    }
     if ($idx_professor_cadastrado > -1 && $idx_professor_cadastrado != $idx_professor){
-      addMsgFlash("<strong>ERRO</strong><br>Já existe outro professor cadastrado com este código!", "error");
+      addMsgFlash("<strong>ERRO</strong><br>Já existe outro professor cadastrado com este código.", "error");
+      $erro = true;
+    }
+    if (strlen($professores["senha"]) < 8){
+      addMsgFlash("A senha cadastrada é curta. Recomenda-se utilizar pelo menos 8 caracteres na senha.", "warning");
+    }
+    if ($erro){
       $modo = "editar"; //carrega dados novamente para editar corretamente
       $professores = listData(NOME_SESSAO_PROFESSORES, $idx_professor);    
       $codigo = $professores["codigo"];
@@ -27,12 +41,12 @@
       $senha = $professores["senha"];
     }else{
       postData($professores, NOME_SESSAO_PROFESSORES, $idx_professor);  
-      addMsgFlash("<strong>Sucesso</strong><br>O cadastro do professor foi ".($idx_professor>-1 ? "alterado" : "realizado")." com sucesso!", "sucess");
+      addMsgFlash("<strong>Sucesso</strong><br>O cadastro do professor foi ".($idx_professor>-1 ? "<strong>alterado</strong>" : "realizado")." com sucesso!", "sucess");
       $modo = "listar"; //muda modo para lista após salvar
     }
   }elseif ($modo == "remove"){
     removeData(NOME_SESSAO_PROFESSORES, $idx_professor);
-    addMsgFlash("<strong>Removido!</strong><br>O cadastro do professor foi removido com sucesso!", "sucess");
+    addMsgFlash("<strong>Sucesso</strong><br>O cadastro do professor foi <strong>removido</strong> com sucesso!", "sucess");
     $modo = "listar";
   }
 
@@ -57,7 +71,7 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th class"codigo">Código</th>
+            <th class="codigo">Código</th>
             <th>Nome</th>
             <th class="opcoes">Opções</th>
           </tr>
@@ -75,7 +89,7 @@
             echo                    
             "<tr>
               <td>$codigo</td>
-              <td align='left'>$nome</td>
+              <td class='align-left'>$nome</td>
               <td>$link_editar $link_remover</td>
             </tr>";     
           }
@@ -87,7 +101,7 @@
 <?php else:?>
   <div id="cadastro-professor" style="display:visible">
    <div id="cadastro-professor-list" class="panel panel-default">
-      <div class="panel-heading">Cadastrado de Professores</div>
+      <div class="panel-heading">Cadastro de Professores</div>
       <div class="panel-body">
         <button type="button" onClick="javascript:carregaFormProfessor('cadastrar', -1);" class="btn btn-default btn-xs btn-novo-cadastro">
           <span class="glyphicon glyphicon glyphicon-plus"></span>
@@ -114,7 +128,7 @@
           <input id="senha" type="password" class="form-control" placeholder="Senha" value="<?= $senha; ?>">
         </div>
         <div class="alert alert-danger danger-senha" style="display:none;">Preencha o campo Senha</div>
-        <button type="button" onclick="javascript:validaCadastro('professor');" class="btn btn-default btn-salvar">
+        <button type="button" onclick="salvarCadastroProfessor();" class="btn btn-default btn-salvar">
           <span class="glyphicon glyphicon-floppy-disk"></span> Salvar
         </button>
       <button type="button" onClick="javascript:carregaFormProfessor('listar', -1);" class="btn btn-default btn-cancelar">

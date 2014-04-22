@@ -17,13 +17,34 @@
       "disciplina" => $_POST["disciplina"],
       "professor" => $_POST["professor"]
     );  
-
-    postData($disciplinas, NOME_SESSAO_DISCIPLINAS, $idx_disciplina);    
-    addMsgFlash("<strong>Sucesso</strong><br>O cadastro da disciplina foi ".($idx_disciplina>-1 ? "alterada" : "realizada")." com sucesso!", "sucess");
-    $modo = "listar";
+    $erro = false;
+    $idx_disciplina_cadastrada = subjectExists($_POST["codigo"]);
+    if($disciplinas["codigo"] == "" || $disciplinas["disciplina"] == "" || $disciplinas["professor"] == ""){
+      addMsgFlash("<strong>ERRO</strong><br>Nenhum campo pode ficar vazio", "error");
+      $erro = true;
+    }
+    if(!preg_match('/^[0-9]*$/', $disciplinas["codigo"])){
+      addMsgFlash("<strong>ERRO</strong><br>O código deve conter apenas números", "error");
+      $erro = true;      
+    }
+    if ($idx_disciplina_cadastrada > -1 && $idx_disciplina_cadastrada != $idx_disciplina){
+      addMsgFlash("<strong>ERRO</strong><br>Já existe outra disciplina com esse código.", "error");
+      $erro = true;
+    }
+    if ($erro){
+      $modo = "editar"; //carrega dos novamente para editar corretamente
+      $disciplinas = listData(NOME_SESSAO_ALUNOS, $idx_disciplina);    
+      $codigo = $disciplinas["codigo"];
+      $disciplina = $disciplinas["disciplina"];
+      $professor = $alunos["professor"];
+    }else{
+      postData($disciplinas, NOME_SESSAO_DISCIPLINAS, $idx_disciplina);    
+      addMsgFlash("<strong>Sucesso</strong><br>O cadastro da disciplina foi ".($idx_disciplina>-1 ? "<strong>alterado</strong>" : "realizado")." com sucesso!", "sucess");
+      $modo = "listar";
+    }
   }elseif ($modo == "remove"){
     removeData(NOME_SESSAO_DISCIPLINAS, $idx_disciplina);
-    addMsgFlash("<strong>Sucesso</strong><br>O cadastro da disciplina foi removido com sucesso!", "sucess");
+    addMsgFlash("<strong>Sucesso</strong><br>O cadastro da disciplina foi <strong>removido</strong> com sucesso!", "sucess");
     $modo = "listar";
   }
 
@@ -50,6 +71,7 @@
           <tr>
             <th class="codigo">Código</th>
             <th>Disciplina</th>
+            <th>Professor</th>
             <th class="opcoes">Opções</th>
           </tr>
         </thead>
@@ -61,13 +83,15 @@
           foreach ($disciplinas as $idx_disciplina => $disciplina){
             $codigo = $disciplina["codigo"];
             $nome_disciplina = $disciplina["disciplina"];
+            $professor_disciplina = $disciplina["professor"];
             $link_editar = "<button type='button' onClick='javascript:carregaFormDisciplina(\"editar\", $idx_disciplina);' class='btn btn-default btn-xs btn-editar'><span class='glyphicon glyphicon glyphicon-edit'></span></button>";
             $link_remover = "<button type='button' onClick='javascript:carregaFormDisciplina(\"remove\", $idx_disciplina);' class='btn btn-default btn-xs btn-remover'><span class='glyphicon glyphicon glyphicon-remove'></span></button>";
 
             echo                    
             "<tr>
               <td>$codigo</td>
-              <td align='left'>$nome_disciplina</td>
+              <td class='align-left'>$nome_disciplina</td>
+              <td class='align-left'>$professor_disciplina</td>
               <td>$link_editar $link_remover</td>
             </tr>";     
           }
@@ -120,7 +144,7 @@
         </select>
       </div>
       <div class="alert alert-danger danger-professor" style="display:none">Preencha o campo Professor</div>      
-      <button type="button" onclick="javascript:validaCadastro('disciplina');" class="btn btn-default btn-salvar">
+      <button type="button" onclick="salvarCadastroDisciplina();" class="btn btn-default btn-salvar">
         <span class="glyphicon glyphicon-floppy-disk"></span> Salvar
       </button>
       <button type="button" onClick="javascript:carregaFormDisciplina('listar', -1);" class="btn btn-default btn-cancelar">

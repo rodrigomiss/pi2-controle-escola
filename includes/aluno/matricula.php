@@ -45,8 +45,8 @@
           echo 
           "<tr>
               <td>$disciplina[codigo]</td>
-              <td align=left>$disciplina[disciplina]</td>
-              <td align=left>".$professores[$disciplina["professor"]]["nome"]."</td>
+              <td class='align-left'>$disciplina[disciplina]</td>
+              <td class='align-left'>".$professores[$disciplina["professor"]]["nome"]."</td>
               <td>
                 <button class='btn btn-default btn-matricular' 
                   onClick=\"javascript:fazerMatricula('$idx_login_aluno', '$idx_disciplina');\" title='Fazer matrícula'> 

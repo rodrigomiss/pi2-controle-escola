@@ -21,6 +21,12 @@
   ?>
 </select>
 <br/>
+<button class="btn btn-default btn-xs btn-refresh">
+  <span class="glyphicon glyphicon-refresh"></span> Atualizar
+</button>
+<br/>
+<span class="info-gray">*Caso alguma disciplina não apareça, atualize a página.</span>
+<br/><br/>
 
 <div id="aluno-notas-list" class="panel panel-default">
   <div class="panel-heading">Lista das Notas</div>
