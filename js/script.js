@@ -71,7 +71,7 @@ $("#btn-aluno-sair").click(function(event){
 
 	$.post("login.php", {modo: "logout-aluno"},
 		function(){
-			setTimeout(function() {window.location.href = 'index.html'}, 800);
+			setTimeout(function() {window.location.href = 'index.php'}, 800);
 		}
 	);
  });
@@ -106,7 +106,7 @@ $("#btn-professor-sair").click(function(event){
 
 	$.post("login.php", {modo: "logout-professor"},
 		function(){
-			setTimeout(function() {window.location.href = 'index.html'}, 800);
+			setTimeout(function() {window.location.href = 'index.php'}, 800);
 		}
 	);
  });
@@ -155,7 +155,7 @@ $("#btn-admin-sair").click(function(event){
 	
 	$.post("login.php", {modo: "logout-admin"},
 		function(){
-			setTimeout(function() {window.location.href = 'index.html'}, 800);
+			setTimeout(function() {window.location.href = 'index.php'}, 800);
 		}
 	);
  });
